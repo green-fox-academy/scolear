@@ -1,0 +1,23 @@
+#header{
+    
+    top: 0;
+    left: 0;
+}
+
+h2{
+    font-size: 24px;
+}
+
+#content-header{
+    font-size: 18px;
+    color: red;
+}
+
+span{
+    display: block;
+    color: blue;
+}
+
+span{
+    color: rgb(121, 59, 59);
+}
