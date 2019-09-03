@@ -13,11 +13,7 @@ h2{
     color: red;
 }
 
-span{
+span, p, a{
     display: block;
     color: blue;
-}
-
-span{
-    color: rgb(121, 59, 59);
 }
