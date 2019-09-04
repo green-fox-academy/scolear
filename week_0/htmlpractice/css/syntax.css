@@ -17,3 +17,7 @@ span, p, a{
     display: block;
     color: blue;
 }
+
+body {
+    background-color: black;
+}

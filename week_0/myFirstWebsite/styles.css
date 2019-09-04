@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(./assets/topography.png);
+    font-family: consolas;
+}
+
+#header {
+    background-color: #333333;
+    padding: 10px 10% 5px;
+    
+}
+
+#header ul {
+    list-style-type: none;
+    overflow: hidden;
+    position: absolute;
+    right: 10%;
+    top: 5px;
+    padding: 10px;
+}
+
+#header li {
+    display: block;
+    float: left;
+    padding: 0 40px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#header li a {
+    color: #ff0099;
+}
