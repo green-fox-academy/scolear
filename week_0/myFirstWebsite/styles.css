@@ -5,13 +5,13 @@
 
 body {
     background-image: url(./assets/topography.png);
-    font-family: consolas;
+    font-family: 'consolas', sans-serif;
 }
 
 #header {
     background-color: #333333;
     padding: 10px 10% 5px;
-    
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #header ul {
@@ -28,9 +28,32 @@ body {
     float: left;
     padding: 0 40px;
     text-align: center;
-    text-transform: uppercase;
+    
 }
 
 #header li a {
+    text-transform: uppercase;
     color: #ff0099;
+    font-weight: 600;
+}
+
+#page-content {
+    padding: 50px 10% 50px;
+}
+
+#introduction {
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.content-header {
+    font-family: 'consolas', serif;
+}
+
+.centered {
+    text-align: center;
+}
+
+.separator {
+    margin: 40px auto;
 }
