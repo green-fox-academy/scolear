@@ -5,13 +5,13 @@
 
 body {
     background-image: url(./assets/topography.png);
-    font-family: 'consolas', sans-serif;
+    font-family: 'Consolas', sans-serif;
 }
 
 #header {
     background-color: #333333;
     padding: 10px 10% 5px;
-    font-family: 'Courier New', Courier, monospace;
+    
 }
 
 #header ul {
@@ -46,8 +46,24 @@ body {
     line-height: 1.6;
 }
 
-.content-header {
-    font-family: 'consolas', serif;
+.serif {
+    font-family: 'Merriweather', serif;
+}
+
+.serif h1 {
+    margin: 0 0 10px;
+    font-size: 45px;
+}
+
+.serif h3 {
+    font-size: 24px;
+    color: #ff0099;
+    font-weight: 500;
+}
+
+.content{
+    font-size: 20px;
+    margin: 10px auto 20px;
 }
 
 .centered {
@@ -55,5 +71,20 @@ body {
 }
 
 .separator {
-    margin: 40px auto;
+    margin: 40px auto 30px;
+}
+
+.serif h2 {
+    line-height: 1.6;
+    font-size: 26px;
+}
+
+.wiki-list {
+    line-height: 1.6;
+}
+
+dt {
+    font-size: 24px;
+    line-height: 2;
+    margin: 10px auto 0;
 }
