@@ -7,4 +7,6 @@
 
 ### First day:
 * [Git practice Repo](https://github.com/scolear/git-lesson-repository)
+
 * [First Website HW](https://scolear.github.io)
+* [scolear.github.io REPO](https://github.com/scolear/scolear.github.io)
