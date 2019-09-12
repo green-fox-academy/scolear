@@ -16,7 +16,6 @@ int main(int argc, char* args[]) {
     //
     // The diamond should have as many lines as the number was
 
-
     int num;
 
     std::cout << "Enter an odd number: ";
@@ -46,6 +45,5 @@ int main(int argc, char* args[]) {
         }
         std::cout << std::endl;
     }
-
     return 0;
 }
