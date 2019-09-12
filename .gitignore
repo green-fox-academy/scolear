@@ -4,9 +4,9 @@
 
 # Perfecting this so it works from the root directory of greenfox/scolear
 
-./**/**/**/cmake*/**
-./**/**/**/CMake*
-./**/**/**/.idea/**
+/**/**/**/cmake*/**
+/**/**/**/CMake*
+/**/**/**/.idea/**
 
 ### C ###
 # Prerequisites
