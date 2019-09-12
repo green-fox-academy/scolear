@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(./assets/topography.png);
+    font-family: 'Consolas', sans-serif;
+}
+
+#header {
+    background-color: #333333;
+    padding: 10px 10% 5px;
+    
+}
+
+#header ul {
+    list-style-type: none;
+    overflow: hidden;
+    position: absolute;
+    right: 10%;
+    top: 5px;
+    padding: 10px;
+}
+
+#header li {
+    display: block;
+    float: left;
+    padding: 0 40px;
+    text-align: center;
+    
+}
+
+#header li a {
+    text-transform: uppercase;
+    color: #ff0099;
+    font-weight: 600;
+}
+
+#page-content {
+    padding: 50px 10% 50px;
+}
+
+#introduction {
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.serif {
+    font-family: 'Merriweather', serif;
+}
+
+.serif h1 {
+    margin: 0 0 10px;
+    font-size: 45px;
+}
+
+.serif h3 {
+    font-size: 24px;
+    color: #ff0099;
+    font-weight: 500;
+}
+
+.content{
+    font-size: 20px;
+    margin: 10px auto 20px;
+}
+
+.centered {
+    text-align: center;
+}
+
+.separator {
+    margin: 40px auto 30px;
+}
+
+.serif h2 {
+    line-height: 1.6;
+    font-size: 26px;
+}
+
+.wiki-list {
+    line-height: 1.6;
+}
+
+dt {
+    font-size: 24px;
+    line-height: 2;
+    margin: 10px auto 0;
+}
