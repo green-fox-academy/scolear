@@ -28,14 +28,16 @@ int main(int argc, char* args[]) {
 
     total = nboys + ngirls;
 
-    if (ngirls < 1) {
+    if (ngirls < 1 && nboys > 0) {
         std::cout << "Sausage party" << std::endl;
-    } else if (total < 20) {
+    } else if (total < 20 && total != 0) {
         std::cout << "Average party..." << std::endl;
     } else if (total >= 20 && nboys == ngirls) {
         std::cout << "The party is excellent!" << std::endl;
     } else if (total >= 20 && nboys != ngirls) {
         std::cout << "Quite cool party!" << std::endl;
+    } else {
+        std::cout << "There is no party.";
     }
 
     return 0;
