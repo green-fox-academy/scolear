@@ -2,6 +2,12 @@
 # Created by https://www.gitignore.io/api/c,c++,code,clion
 # Edit at https://www.gitignore.io/?templates=c,c++,code,clion
 
+# Perfecting this so it works from the root directory of greenfox/scolear
+
+./week*/day*/*/cmake*
+./week*/day*/*/CMake*
+./week*/day*/*/.idea/*
+
 ### C ###
 # Prerequisites
 *.d
