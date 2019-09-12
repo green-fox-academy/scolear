@@ -4,9 +4,9 @@
 
 # Perfecting this so it works from the root directory of greenfox/scolear
 
-./week*/day*/*/cmake*
-./week*/day*/*/CMake*
-./week*/day*/*/.idea/*
+./**/**/**/cmake*/**
+./**/**/**/CMake*
+./**/**/**/.idea/**
 
 ### C ###
 # Prerequisites
