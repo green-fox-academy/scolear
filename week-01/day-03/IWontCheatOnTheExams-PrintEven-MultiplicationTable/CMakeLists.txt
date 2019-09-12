@@ -1,6 +1,0 @@
-cmake_minimum_required(VERSION 3.14)
-project(IWontCheatOnTheExams_PrintEven_MultiplicationTable)
-
-set(CMAKE_CXX_STANDARD 14)
-
-add_executable(IWontCheatOnTheExams_PrintEven_MultiplicationTable main.cpp)
