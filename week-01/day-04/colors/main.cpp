@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cstring>
 
 int main(int argc, char* args[]) {
 
@@ -17,8 +18,20 @@ int main(int argc, char* args[]) {
 
     std::string colors[numColors][maxLength];
 
-    // I hate how manual this is:
+    char colors2[numColors][maxLength][200];
+
+    colors2[0][0][0] = 'a';
+    colors2[0][0][1] = 's';
+    colors2[0][0][2] = 'd';
     
+    strcpy(colors2[0][0], "lime");
+
+    //memcpy
+    //sprintf
+    //strcpy
+
+    // I hate how manual this is:
+
     colors[0][0] = "lime";
     colors[0][1] = "forest-green";
     colors[0][2] = "olive";
