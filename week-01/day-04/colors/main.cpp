@@ -13,24 +13,25 @@ int main(int argc, char* args[]) {
     // - In `colors[2]` store the shades of pink:
     //   `"orchid", "violet", "pink", "hot pink"`
 
-    int numColors = 3;
-    int maxLength = 5;
-
-    std::string colors[numColors][maxLength];
-
+/*
     char colors2[numColors][maxLength][200];
-
     colors2[0][0][0] = 'a';
     colors2[0][0][1] = 's';
     colors2[0][0][2] = 'd';
-    
+
     strcpy(colors2[0][0], "lime");
 
     //memcpy
     //sprintf
     //strcpy
+*/
 
     // I hate how manual this is:
+
+    int numColors = 3;
+    int maxLength = 5;
+
+    std::string colors[numColors][maxLength];
 
     colors[0][0] = "lime";
     colors[0][1] = "forest-green";
