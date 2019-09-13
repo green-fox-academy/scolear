@@ -28,6 +28,7 @@ int main(int argc, char* args[]) {
 }
 
 int unique(int array[], int result[], int size) {
+    // Unfortunately this only leaves elements who only appear once, and doesnt spare the others...
 
     int k = 0;
     bool flag;
@@ -53,6 +54,8 @@ int unique(int array[], int result[], int size) {
             k++;
         }
     }
+
+
     return k;
 }
 
