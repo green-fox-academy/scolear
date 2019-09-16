@@ -15,6 +15,7 @@ Who buys more products? (piece)
 
 float userPays(std::map<std::string, int>, std::map<std::string, float>);
 bool whoBuysMore(std::map<std::string, int>, std::map<std::string, int>, std::string);
+int hasItem(std::map<std::string, int>, std::string);
 
 
 int main() {
@@ -57,6 +58,8 @@ int main() {
     std::cout << "Bob pays: " << userPays(listBob, products) << std::endl;
     std::cout << "Alice pays: " << userPays(listAlice, products) << std::endl;
 
+    hasItem(listAlice, "rice");
+
     return 0;
 }
 
@@ -80,6 +83,17 @@ bool whoBuysMore(std::map<std::string, int> listA, std::map<std::string, int> li
     int a = 0;
     int b = 0;
 
-    for (std::pair<std::string, int> itemCount : list) // todo: functionalize this also.
 
+
+
+}
+
+int hasItem(std::map<std::string, int> listMap, std::string item)
+{
+    int num = 0;
+    for (std::pair<std::string, int> countPair : listMap) {
+        if (listMap.count(item)){
+            num++;
+        }
+    }
 }
