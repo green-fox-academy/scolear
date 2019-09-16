@@ -15,6 +15,7 @@ Create an application which solves the following problems.
 .How many products' price is below 300?
 .Is there anything we can buy for exactly 125?
 .What is the cheapest product?
+
 */
 
 #include <iostream>
@@ -33,7 +34,7 @@ int main() {
     std::map<std::string, int> products =
             {
                     {"eggs", 200},
-                    {"milk", 125},
+                    {"milk", 200},
                     {"fish", 400},
                     {"apples", 150},
                     {"bread", 50},
