@@ -3,10 +3,10 @@ Create an application which solves the following problems.
 
 .How much does Bob pay?
 .How much does Alice pay?
-Who buys more Rice?
-Who buys more Potato?
-Who buys more different products?
-Who buys more products? (piece)
+.Who buys more Rice?
+.Who buys more Potato?
+.Who buys more different products?
+.Who buys more products? (piece)
 */
 
 #include <iostream>
@@ -14,8 +14,7 @@ Who buys more products? (piece)
 #include <map>
 
 float userPays(std::map<std::string, int>, std::map<std::string, float>);
-bool whoBuysMore(std::map<std::string, int>, std::map<std::string, int>, std::string);
-int hasItem(std::map<std::string, int>, std::string);
+int totalItems(std::map<std::string, int>);
 
 
 int main() {
@@ -54,14 +53,25 @@ int main() {
                     {"tomato", 10},
             };
 
-
+    // How much do they pay?
     std::cout << "Bob pays: " << userPays(listBob, products) << std::endl;
     std::cout << "Alice pays: " << userPays(listAlice, products) << std::endl;
 
-    hasItem(listAlice, "rice");
+    // Who buys more Rice?
+    std::string item = "rice";
+    listBob[item] < listAlice[item] ? std::cout << "Alice buys more " << item << ".\n" : std::cout << "Bob buys more " << item << ".\n";
+    item = "potato";
+    listBob[item] < listAlice[item] ? std::cout << "Alice buys more " << item << ".\n" : std::cout << "Bob buys more " << item << ".\n";
+
+    // Who buys more different products?
+    listBob.size() < listAlice.size() ? std::cout << "Alice has bigger variety.\n" : std::cout << "Bob has bigger variety.\n";
+
+    // Who buys more products? (piece)
+    totalItems(listBob) < totalItems(listAlice) ? std::cout << "Alice buys more pieces.\n" : std::cout << "Bob buys more pieces.\n";
 
     return 0;
 }
+
 
 float userPays(std::map<std::string, int> usersList, std::map<std::string, float> productList)
 {
@@ -72,28 +82,16 @@ float userPays(std::map<std::string, int> usersList, std::map<std::string, float
             sumPrice += productList[pricePair.first] * usersList[pricePair.first];
         }
     }
-
     return sumPrice;
 }
 
-bool whoBuysMore(std::map<std::string, int> listA, std::map<std::string, int> listB, std::string item)
+
+int totalItems(std::map<std::string, int> itemList)
 {
-    // returns 1 if first user buys more of item
+    int total = 0;
 
-    int a = 0;
-    int b = 0;
-
-
-
-
-}
-
-int hasItem(std::map<std::string, int> listMap, std::string item)
-{
-    int num = 0;
-    for (std::pair<std::string, int> countPair : listMap) {
-        if (listMap.count(item)){
-            num++;
-        }
+    for(std::pair<std::string, int> itemPair : itemList) {
+        total += itemPair.second;
     }
+    return total;
 }
