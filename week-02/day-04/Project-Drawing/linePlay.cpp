@@ -16,5 +16,5 @@ void draw(SDL_Renderer* gRenderer) {
     for (int i = 0; i < SCREEN_SIZE; i += 20) {
         SDL_RenderDrawLine(gRenderer, 0, i, i, SCREEN_SIZE);
     }
-    
+
 }
