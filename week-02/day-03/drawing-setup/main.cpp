@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SDL.h>
 #include "draw.h"
+#include "utils.h"
 
 //Starts up SDL and creates window
 bool init();
