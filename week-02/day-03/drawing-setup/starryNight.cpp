@@ -33,8 +33,8 @@ void drawRect(SDL_Renderer* renderer, int xp, int yp) {
     SDL_Rect rect;
     rect.x = xp;
     rect.y = yp;
-    rect.h = 3;
-    rect.w = 3;
+    rect.h = 4;
+    rect.w = 4;
 
     SDL_RenderFillRect(renderer, &rect);
 }
