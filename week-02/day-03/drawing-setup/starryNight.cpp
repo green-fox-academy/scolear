@@ -49,10 +49,11 @@ void draw(SDL_Renderer* gRenderer) {
 
     for (int i = 0; i < 100; ++i) {
 
-        int whiteness = randomNumber(150, 255);
-        SDL_SetRenderDrawColor(gRenderer, whiteness, whiteness, whiteness, 255);
+        int brightness = randomNumber(150, 255);
+        SDL_SetRenderDrawColor(gRenderer, brightness, brightness, brightness, 255);
 
         drawRect(gRenderer, rand() % (SCREEN_WIDTH - 3), rand() % (SCREEN_HEIGHT - 3));
+
     }
 
 }
