@@ -2,6 +2,7 @@
 // Created by scolear on 2019. 09. 18..
 //
 #include "utils.h"
+#include <cstdlib>
 
 int randomNumber(int nr_min, int nr_max)
 {
