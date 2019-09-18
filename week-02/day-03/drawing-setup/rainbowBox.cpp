@@ -11,7 +11,7 @@
 
 void rainbowSquare(SDL_Renderer* renderer, int size, int r, int g, int b) {
 
-    SDL_SetRenderDrawColor(renderer, r, g, b, 255);
+    SDL_SetRenderDrawColor(renderer, r, g, b, 100);
 
     SDL_Rect rect;
     rect.x = SCREEN_WIDTH / 2 - size / 2;
