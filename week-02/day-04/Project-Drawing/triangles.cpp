@@ -22,7 +22,7 @@ void draw(SDL_Renderer* gRenderer) {
 
     int size = 30;
     float height = size * (sqrt(3) / 2);
-    
+
     int Yinit = SCREEN_SIZE - 1;
 
     for (int j = 21; j > 0; --j) {
