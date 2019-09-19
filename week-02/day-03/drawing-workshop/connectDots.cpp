@@ -10,13 +10,13 @@
 
 #include "draw.h"
 
-void connectDots(SDL_Renderer* renderer, int arr[][2], int len) {
+void connectDots(SDL_Renderer* renderer, int coordinates[][2], int len) {
 
     for (int i = 0; i < len; ++i) {
         if (i == len - 1) {
-            SDL_RenderDrawLine(renderer, arr[i][0], arr[i][1], arr[0][0], arr[0][1]);
+            SDL_RenderDrawLine(renderer, coordinates[i][0], coordinates[i][1], coordinates[0][0], coordinates[0][1]);
         } else {
-            SDL_RenderDrawLine(renderer, arr[i][0], arr[i][1], arr[i + 1][0], arr[i + 1][1]);
+            SDL_RenderDrawLine(renderer, coordinates[i][0], coordinates[i][1], coordinates[i + 1][0], coordinates[i + 1][1]);
         }
     }
 }
@@ -37,4 +37,3 @@ void draw(SDL_Renderer* gRenderer) {
     connectDots(gRenderer, shape, shapesize);
     SDL_Delay(2);
 }
-
