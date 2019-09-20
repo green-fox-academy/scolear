@@ -7,8 +7,8 @@
 
 constexpr double pi() { return std::atan(1)*4; }
 
-void connectDots(SDL_Renderer* renderer, int coordinates[6][2]) {
-
+void connectDots(SDL_Renderer* renderer, int coordinates[6][2])
+{
     for (int i = 0; i < 6; ++i) {
         if (i == 5) {
             SDL_RenderDrawLine(renderer, coordinates[i][0], coordinates[i][1], coordinates[0][0], coordinates[0][1]);
@@ -37,12 +37,13 @@ void drawHexagon(SDL_Renderer* gRenderer, int startX, int startY, int side, doub
     connectDots(gRenderer, coords);
 }
 
-void draw(SDL_Renderer* gRenderer) {
-
+void draw(SDL_Renderer* gRenderer)
+{
     SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255);
 
     double h_parameter = sin(pi() / 3);                             // sin(60)
-    int pattern[7] = {4, 5, 6, 7, 6, 5, 4};                             // hardcoded hexagon hexagon
+    int patternSize = 7;
+    int pattern[] = {patternSize - 3, patternSize - 2, patternSize - 1, patternSize, patternSize - 1, patternSize - 2, patternSize - 3};                             // hardcoded hexagon hexagon
 
     // Size of side:
     int side = 40;
@@ -51,11 +52,11 @@ void draw(SDL_Renderer* gRenderer) {
     int initY = 200;
     int initX = 50;
 
-    for (int i = 0; i < 7; ++i) {
+    for (int i = 0; i < patternSize; ++i) {
 
         initX += side * 1.5;
 
-        if ( i < 4) {
+        if ( i < patternSize / 2 + 1) {
             initY -= h_parameter * side;
         } else {
             initY += h_parameter * side;
