@@ -80,9 +80,7 @@ int main(int argc, char *args[]) {
             //User requests quit
             if (e.type == SDL_QUIT) {
                 quit = true;
-            }
-
-            if (e.type == SDL_MOUSEBUTTONDOWN) {
+            } else if (e.type == SDL_MOUSEBUTTONDOWN) {
 
                 if (visible) {
                     std::cout << "Stop\n";

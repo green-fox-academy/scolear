@@ -47,8 +47,6 @@ void draw(SDL_Renderer* gRenderer) {
 
     // Don't forget to set the background color to black in main.cpp
 
-    SDL_SetRenderDrawBlendMode(gRenderer, SDL_BLENDMODE_BLEND);
-
     int starSize = 2;
     int numOfStars = 160;
 
@@ -58,9 +56,7 @@ void draw(SDL_Renderer* gRenderer) {
 
     for (int i = 0; i < numOfStars; ++i) {
 
-        //int brightness = randomNumber(192, 255);
         int brightness = rand() % 200 + 190;
-        //int brightness = 192;
 
         SDL_SetRenderDrawColor(gRenderer, brightness, brightness, brightness, 255);
 
