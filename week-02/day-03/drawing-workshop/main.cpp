@@ -83,9 +83,9 @@ int main(int argc, char *args[]) {
             }
 
             if (e.type == SDL_MOUSEBUTTONDOWN) {
-                std::cout << "Mouse pressed\n";
 
                 if (visible) {
+                    std::cout << "Stop\n";
                     visible = false;
                     ShootingStarSize = 0;
                 } else {
