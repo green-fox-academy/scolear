@@ -1,29 +1,24 @@
 //
-// Created by scolear on 2019. 09. 18..
+// Created by scolear on 2019. 09. 20..
 //
-
-// Draw the night sky:
-//  - The background should be black
-//  - The stars can be small squares
-//  - The stars should have random positions on the canvas
-//  - The stars should have random color (some shade of grey)
-//
-// You might have to make modifications somewhere else to create a black background ;)
 
 #include "draw.h"
 #include <ctime>
-#include <cstdlib>
+#include <vector>
 
 int coordinates[160][2];
 bool flag = false;
 
+
 int randomNumber(int nr_min, int nr_max)
 {
     static bool initialized = false;
+
     if (!initialized) {
         initialized = true;
         srand(time(NULL));
     }
+
     return rand() % nr_max + nr_min;
 }
 
@@ -45,10 +40,6 @@ void drawStar(SDL_Renderer* renderer, int xp, int yp, int starSize)
 
 void draw(SDL_Renderer* gRenderer) {
 
-    // Don't forget to set the background color to black in main.cpp
-
-    SDL_SetRenderDrawBlendMode(gRenderer, SDL_BLENDMODE_BLEND);
-
     int starSize = 2;
     int numOfStars = 160;
 
@@ -58,15 +49,14 @@ void draw(SDL_Renderer* gRenderer) {
 
     for (int i = 0; i < numOfStars; ++i) {
 
-        //int brightness = randomNumber(192, 255);
-        int brightness = rand() % 200 + 190;
-        //int brightness = 192;
-
+        int brightness = randomNumber(150, 200);
         SDL_SetRenderDrawColor(gRenderer, brightness, brightness, brightness, 255);
 
         drawStar(gRenderer, coordinates[i][0], coordinates[i][1], starSize);
 
-        SDL_Delay(1);
+        SDL_Delay(3);
     }
 
+
 }
+

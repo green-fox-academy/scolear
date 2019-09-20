@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include "draw.h"
 #include "utils.h"
+#include "starryNight.h"
 
 //Starts up SDL and creates window
 bool init();
@@ -63,6 +64,11 @@ int main(int argc, char *args[]) {
 
     //Main loop flag
     bool quit = false;
+    bool visible = false;
+    int ShootingStarPosX = 0;
+    int ShootingStarPosY = 0;
+    int initSSSize = 70;
+    int ShootingStarSize = initSSSize;
 
     //Event handler
     SDL_Event e;
@@ -75,6 +81,23 @@ int main(int argc, char *args[]) {
             if (e.type == SDL_QUIT) {
                 quit = true;
             }
+
+            if (e.type == SDL_MOUSEBUTTONDOWN) {
+                std::cout << "Mouse pressed\n";
+
+                if (visible) {
+                    visible = false;
+                    ShootingStarSize = 0;
+                } else {
+                    int mouseX, mouseY;
+                    ShootingStarSize = initSSSize;
+                    SDL_GetMouseState( &mouseX, &mouseY );
+                    ShootingStarPosX = mouseX;
+                    ShootingStarPosY = mouseY;
+                    std::cout << "Shooting star from " << mouseX << " " << mouseY << std::endl;
+                    visible = true;
+                }
+            }
         }
 
         //Clear screen
@@ -86,6 +109,16 @@ int main(int argc, char *args[]) {
         SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255);
 
         SDL_RenderClear(gRenderer);
+
+        if (visible) {
+            ShootingStarPosY -= 20;
+            ShootingStarPosX += 5;
+            if ( ShootingStarSize > 0) {
+                ShootingStarSize -= 5;
+            }
+            SDL_SetRenderDrawColor(gRenderer, 230, 255, 41, 255);
+            drawStar(gRenderer, ShootingStarPosX, ShootingStarPosY, ShootingStarSize);
+        }
 
         draw(gRenderer);
 
