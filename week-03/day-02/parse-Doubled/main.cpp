@@ -23,12 +23,6 @@ int main() {
             }
             std::cout << word << ' ';
         }
-
-
-
     }
-
-
-
     return 0;
 }
