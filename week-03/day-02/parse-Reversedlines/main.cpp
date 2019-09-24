@@ -22,7 +22,6 @@ int main() {
                 temp = line[i];
                 line[i] = line[line.length() - i - 1];
                 line[line.length() - i - 1] = temp;
-
             }
             std::cout << line << std::endl;
         }
