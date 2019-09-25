@@ -1,6 +1,6 @@
 #include "PostIt.h"
-
 #include <utility>
+#include <iostream>
 
 PostIt::PostIt() {
     _backgroundColor = "0";
@@ -16,6 +16,10 @@ PostIt::PostIt(std::string backgroundColor, std::string text, std::string textCo
     _textColor = textColor;
     _width = 0;
     _height = 0;
+}
+
+PostIt::~PostIt() {
+    std::cout << "i dont feel so good mr stark. \n";
 }
 
 int PostIt::area()

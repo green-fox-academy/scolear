@@ -8,6 +8,7 @@ class PostIt {
 public:
     PostIt();
     PostIt(std::string, std::string, std::string);
+    ~PostIt();
 
     void setWidth(int width);
 

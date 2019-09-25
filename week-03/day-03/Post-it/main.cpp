@@ -23,7 +23,7 @@ int main() {
     // initializing with constructor:
     PostIt post3("pink", "Awesome", "black");
 
-    std::cout << post3.getText();
+    std::cout << post3.getText() << std::endl;
 
     /*
     // bad practice to access class member variables directly:

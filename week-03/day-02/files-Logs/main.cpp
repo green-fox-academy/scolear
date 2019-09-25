@@ -35,7 +35,9 @@ int main() {
             std::cout << uniqueIPs[i] << std::endl;
         }
 
+        std::cout << "Number of Unique IPs: " << uniqueIPs.size() << std::endl;
         std::cout << "POST/GET RATIO: " << postGetRatio;
+
 
     } else {
         std::cout << "Couldn't open file. Exiting.";
