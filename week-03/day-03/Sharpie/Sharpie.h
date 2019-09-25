@@ -5,7 +5,6 @@
 #ifndef SHARPIE_SHARPIE_H
 #define SHARPIE_SHARPIE_H
 
-
 #include <string>
 
 class Sharpie {
@@ -17,6 +16,5 @@ private:
     float _width;
     float _inkAmount;
 };
-
 
 #endif //SHARPIE_SHARPIE_H
