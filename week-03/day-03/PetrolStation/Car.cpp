@@ -1,7 +1,3 @@
-//
-// Created by scolear on 2019. 09. 25..
-//
-
 #include "Car.h"
 
 Car::Car(int gasAmount, int capacity) {
