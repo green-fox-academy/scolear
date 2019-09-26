@@ -6,7 +6,7 @@ Station::Station() {
     _gasAmount = 1000;
 }
 
-void Station::fill(Car car) {
+void Station::fill(Car &car) {
 
     std::cout << "Filling car..." << std::endl;
 

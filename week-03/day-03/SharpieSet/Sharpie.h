@@ -9,12 +9,12 @@ public:
     Sharpie(std::string color, float width);
 
     void use();
-    float getInkAmount() const;
+    int getInkAmount() const;
 
 private:
     std::string _color;
     float _width;
-    float _inkAmount;
+    int _inkAmount;
 };
 
 #endif //SHARPIE_SHARPIE_H

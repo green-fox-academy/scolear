@@ -6,7 +6,7 @@ class Station {
 
 public:
     Station();
-    void fill(Car car);
+    void fill(Car &car);
 
 private:
     int _gasAmount;

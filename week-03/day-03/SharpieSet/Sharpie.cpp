@@ -9,8 +9,9 @@ Sharpie::Sharpie(std::string color, float width) {
 
 void Sharpie::use() {
     _inkAmount--;
+    if (_inkAmount < 0) _inkAmount = 0;
 }
 
-float Sharpie::getInkAmount() const {
+int Sharpie::getInkAmount() const {
     return _inkAmount;
 }

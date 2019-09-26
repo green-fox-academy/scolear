@@ -21,10 +21,10 @@ int main() {
     Sharpie sharp3("green", 2.5);
     Sharpie sharp4("black", 2.5);
 
-    set.addSharpie(sharp1);
-    set.addSharpie(sharp2);
-    set.addSharpie(sharp3);
-    set.addSharpie(sharp4);
+    set.addSharpie(&sharp1);
+    set.addSharpie(&sharp2);
+    set.addSharpie(&sharp3);
+    set.addSharpie(&sharp4);
 
     std::cout << "Usable sharpies in set: " << set.countUsable() << std::endl;
 
@@ -33,6 +33,7 @@ int main() {
         set.getSharpie(0)->use();
         std::cout << set.getSharpie(0)->getInkAmount() << " , ";
     }
+
 
     std::cout << "\nUsable sharpies in set: " << set.countUsable() << std::endl;
     std::cout << "Total sharpies in set: " << set.countTotal() << std::endl;

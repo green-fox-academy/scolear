@@ -10,7 +10,7 @@ class SharpieSet {
 public:
     SharpieSet();
 
-    void addSharpie(Sharpie &sharpie);
+    void addSharpie(Sharpie* sharpie);
 
     Sharpie *getSharpie(int x);
     int countUsable();
@@ -18,7 +18,7 @@ public:
     void removeTrash();
 
 private:
-    std::vector<Sharpie> _sharpies;
+    std::vector<Sharpie*> _sharpies;
 };
 
 

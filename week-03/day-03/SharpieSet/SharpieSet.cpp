@@ -5,10 +5,18 @@ SharpieSet::SharpieSet() {
 
 }
 
+void SharpieSet::addSharpie(Sharpie *sharpie) {
+    _sharpies.push_back(sharpie);
+}
+
+Sharpie* SharpieSet::getSharpie(int x) {
+    return _sharpies[x];
+}
+
 int SharpieSet::countUsable() {
     int usable = 0;
     for (int i = 0; i < _sharpies.size(); ++i) {
-        if (_sharpies[i].getInkAmount() != 0) {
+        if (_sharpies[i]->getInkAmount() != 0) {
             usable++;
         }
     }
@@ -17,20 +25,11 @@ int SharpieSet::countUsable() {
 
 void SharpieSet::removeTrash() {
     for (int i = 0; i < _sharpies.size(); ++i) {
-        if (_sharpies[i].getInkAmount() == 0) {
+        if (_sharpies[i]->getInkAmount() == 0) {
             _sharpies.erase(_sharpies.begin() + i);
+            i--;
         }
     }
-}
-
-void SharpieSet::addSharpie(Sharpie &sharpie) {
-
-    _sharpies.push_back(sharpie);
-
-}
-
-Sharpie* SharpieSet::getSharpie(int x) {
-    return &_sharpies[x];
 }
 
 int SharpieSet::countTotal(){
