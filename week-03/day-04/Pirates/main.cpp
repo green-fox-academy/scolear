@@ -4,7 +4,7 @@
 
 int main() {
 
-    //srand(time(nullptr));
+    srand(time(nullptr));
 
     Pirate pali;
 

@@ -17,8 +17,8 @@ void Ship::printStatus() {
 void Ship::fillShip() {
 
     // todo: Calling this in quick succession means all ships have the same sized crew...
-    srand(time(nullptr));
-    int num = rand()%100 + 1;
+    // srand(time(nullptr));
+    int num = rand()%_capacity + 1;
 
     while (_crew.size() <= num && _crew.size() < _capacity) {
         _crew.push_back(new Pirate);
