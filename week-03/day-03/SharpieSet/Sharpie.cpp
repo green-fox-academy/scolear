@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Sharpie.h"
 
 Sharpie::Sharpie(std::string color, float width) {

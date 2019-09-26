@@ -12,8 +12,9 @@ public:
 
     void addSharpie(Sharpie &sharpie);
 
-    Sharpie getSharpie(int x);
+    Sharpie *getSharpie(int x);
     int countUsable();
+    int countTotal();
     void removeTrash();
 
 private:

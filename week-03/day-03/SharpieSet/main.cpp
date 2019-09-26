@@ -28,13 +28,17 @@ int main() {
 
     std::cout << "Usable sharpies in set: " << set.countUsable() << std::endl;
 
+    std::cout << "Using first sharpie: " << std::endl;
     for (int i = 0; i < 10; ++i) {
-        set.getSharpie(0).use();
-        std::cout << set.getSharpie(0).getInkAmount();
+        set.getSharpie(0)->use();
+        std::cout << set.getSharpie(0)->getInkAmount() << " , ";
     }
 
-    std::cout << "Usable sharpies in set: " << set.countUsable() << std::endl;
-
+    std::cout << "\nUsable sharpies in set: " << set.countUsable() << std::endl;
+    std::cout << "Total sharpies in set: " << set.countTotal() << std::endl;
+    std::cout << "Removing trash..." << std::endl;
+    set.removeTrash();
+    std::cout << "Total sharpies in set: " << set.countTotal() << std::endl;
 
     return 0;
 }

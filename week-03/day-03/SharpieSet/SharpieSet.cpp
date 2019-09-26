@@ -29,7 +29,14 @@ void SharpieSet::addSharpie(Sharpie &sharpie) {
 
 }
 
-Sharpie SharpieSet::getSharpie(int x) {
-    return _sharpies[x];
+Sharpie* SharpieSet::getSharpie(int x) {
+    return &_sharpies[x];
 }
 
+int SharpieSet::countTotal(){
+    int total = 0;
+    for (int i = 0; i < _sharpies.size(); ++i) {
+        total++;
+    }
+    return total;
+}
