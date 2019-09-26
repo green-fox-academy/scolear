@@ -19,7 +19,7 @@ public:
 
 private:
     int _slots;
-    std::vector<Animal> _animals;
+    std::vector<Animal*> _animals;
 
 };
 
