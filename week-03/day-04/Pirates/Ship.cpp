@@ -9,13 +9,9 @@ Ship::Ship(std::string name) : _captain(false), _capacity(100), _name(name){}
 
 void Ship::printStatus() {
     std::cout << "\nStatus: " << _name << std::endl;
-    std::cout << "Crew size: " << getCrewSize() << " Has captain: " << (hasCaptain() ? "yes" : "no") << std::endl;
+    std::cout << "Crew size: " << getCrewSize()  << std::endl;
     std::cout << getCaptainStatus() << std::endl;
     std::cout << "Crew alive: " << getCrewStatus().first << " Crew awake: " << getCrewStatus().second << std::endl;
-}
-
-bool Ship::hasCaptain() {
-    return _captain;
 }
 
 void Ship::fillShip() {
@@ -30,6 +26,11 @@ void Ship::fillShip() {
             makeCaptain();
         }
     }
+}
+
+bool Ship::hasCaptain() {
+    if (!_crew[0]->isAlive()) _captain = false;
+    return _captain;
 }
 
 void Ship::makeCaptain() {
@@ -48,6 +49,10 @@ std::string Ship::getCaptainStatus() {
     } else {
         return "The ship has no captain.";
     }
+}
+
+int Ship::getCapacity() {
+    return _capacity;
 }
 
 int Ship::getCrewSize() {
@@ -69,6 +74,31 @@ std::pair<int,int> Ship::getCrewStatus() {
     return std::make_pair(alive, awake);
 }
 
+bool Ship::hasAvailableCrew() {
+    return (getCrewStatus().second > 0);
+}
+
+void Ship::throwOutTheDead() {
+    for (int i = 0; i < _crew.size(); i++) {
+        if (!_crew[i]->isAlive()) _crew.erase(_crew.begin() + i);
+    }
+}
+
 bool Ship::battle(Ship* otherShip) {
 
+    int i = 0, j = 0;
+    while (hasAvailableCrew() && otherShip->hasAvailableCrew()) {
+
+        _crew[i]->brawl(otherShip->_crew[j]);
+        i++;
+        j++;
+
+        if (i >= _crew.size()) i = 0;
+        if (j >= otherShip->_crew.size()) j = 0;
+
+        throwOutTheDead();
+        otherShip->throwOutTheDead();
+    }
+
+    return hasAvailableCrew();
 }

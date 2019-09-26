@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Pirate.h"
 
+
+
 Pirate::Pirate(): _intoxication(0), _alive(true), _awake(true), _captain(false){}
 
 void Pirate::drinkSomeRum() {
@@ -49,12 +51,12 @@ bool Pirate::isAwake() {
 }
 
 void Pirate::brawl(Pirate *otherPirate) {
-    srand(time(nullptr));
+
     int outcome = rand() % 30;
 
     // Captains are tougher:
-    if (isCaptain() && outcome < 20) outcome += 5;
-    if (otherPirate->isCaptain() && outcome > 10) outcome -= 5;
+    // if (isCaptain() && outcome < 20) outcome += 5;
+    // if (otherPirate->isCaptain() && outcome > 10) outcome -= 5;
 
     while ((_alive && otherPirate->isAlive()) && (_awake && otherPirate->isAwake())) {
         switch (outcome)

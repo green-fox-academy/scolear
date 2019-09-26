@@ -29,7 +29,10 @@ public:
     void fillShip();
     bool hasCaptain();
     void makeCaptain();
+    int getCapacity();
     int getCrewSize();
+    bool hasAvailableCrew();
+    void throwOutTheDead();
 
     bool battle(Ship* otherShip);
 

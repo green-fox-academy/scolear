@@ -4,6 +4,8 @@
 
 int main() {
 
+    //srand(time(nullptr));
+
     Pirate pali;
 
     Pirate jani;
@@ -20,6 +22,11 @@ int main() {
 
     Ship Astra("Astra");
     Astra.fillShip();
+    Astra.printStatus();
+
+    Beluga.battle(&Astra);
+
+    Beluga.printStatus();
     Astra.printStatus();
 
 
