@@ -26,7 +26,7 @@ int main() {
     animalFarm.feedAnimal(0);
 
     animalFarm.slaughter();
-    
+
     std::cout << animalFarm.getNumberOfAnimals() << std::endl;
     return 0;
 }
