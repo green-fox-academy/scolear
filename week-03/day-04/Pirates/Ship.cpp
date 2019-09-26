@@ -21,7 +21,7 @@ void Ship::fillShip() {
     int num = rand()%_capacity + 1;
 
     while (_crew.size() <= num && _crew.size() < _capacity) {
-        _crew.push_back(new Pirate);
+        _crew.emplace_back(new Pirate);
         if(!hasCaptain()) {
             makeCaptain();
         }
