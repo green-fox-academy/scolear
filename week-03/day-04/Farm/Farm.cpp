@@ -13,6 +13,7 @@ void Farm::breed() {
 }
 
 void Farm::slaughter() {
+
     if (!_animals.empty()) {
         int min = _animals[0]->getHunger();
         int index = 0;
@@ -23,6 +24,7 @@ void Farm::slaughter() {
             }
         }
         _animals.erase(_animals.begin() + index);
+
     } else {
         std::cout << "There are no animals to slaughter." << std::endl;
     }
@@ -38,5 +40,11 @@ void Farm::feedAnimal(int x) {
 
 int Farm::getNumberOfAnimals() {
     return _animals.size();
+}
+
+Farm::~Farm() {
+    for (Animal* a : _animals) {
+        delete a;
+    }
 }
 

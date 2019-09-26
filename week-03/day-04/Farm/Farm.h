@@ -8,6 +8,7 @@
 class Farm {
 public:
     Farm();
+    ~Farm();
 
     Animal* getAnimal(int i);
     int getNumberOfAnimals();
