@@ -10,7 +10,9 @@ void SharpieSet::addSharpie(Sharpie *sharpie) {
 }
 
 Sharpie* SharpieSet::getSharpie(int x) {
-    return _sharpies[x];
+    if (x >= 0 && x <= _sharpies.size()) {
+        return _sharpies[x];
+    }
 }
 
 int SharpieSet::countUsable() {
