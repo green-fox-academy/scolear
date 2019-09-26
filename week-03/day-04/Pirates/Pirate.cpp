@@ -1,8 +1,7 @@
-
 #include <iostream>
 #include "Pirate.h"
 
-Pirate::Pirate(): _intoxication(0), _alive(true), _awake(true){}
+Pirate::Pirate(): _intoxication(0), _alive(true), _awake(true), _captain(false){}
 
 void Pirate::drinkSomeRum() {
     if(_alive && _awake) {
@@ -60,16 +59,28 @@ void Pirate::brawl(Pirate *otherPirate) {
                 die();
                 break;
             case 10 ... 19:
-                otherPirate->die();
-                break;
-            case 20 ... 29:
                 passOut();
                 otherPirate->passOut();
+                break;
+            case 20 ... 29:
+                otherPirate->die();
                 break;
             default:
                 std::cout << "Something wrong with brawl()" << std::endl;
                 break;
         }
     }
+}
+
+void Pirate::makeCaptain() {
+    _captain = true;
+}
+
+bool Pirate::isCaptain() {
+    return _captain;
+}
+
+int Pirate::getDrunkenness() {
+    return _intoxication;
 }
 

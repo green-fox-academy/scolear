@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Pirate.h"
+#include "Ship.h"
 
 int main() {
 
@@ -11,6 +12,11 @@ int main() {
 
     pali.howsItGoingMate();
     jani.howsItGoingMate();
+
+    Ship Beluga;
+    Beluga.printStatus();
+    Beluga.fillShip();
+    Beluga.printStatus();
 
 
     return 0;
