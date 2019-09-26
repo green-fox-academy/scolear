@@ -7,8 +7,8 @@ class Sharpie {
 
 public:
     Sharpie(std::string color, float width);
-    void use();
 
+    void use();
     float getInkAmount() const;
 
 private:
