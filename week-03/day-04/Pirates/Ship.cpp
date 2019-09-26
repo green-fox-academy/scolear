@@ -5,11 +5,13 @@
 
 Ship::Ship() : _captain(false), _capacity(100){}
 
+Ship::Ship(std::string name) : _captain(false), _capacity(100), _name(name){}
+
 void Ship::printStatus() {
-    std::cout << "\nStatus: " << std::endl;
+    std::cout << "\nStatus: " << _name << std::endl;
     std::cout << "Crew size: " << getCrewSize() << " Has captain: " << (hasCaptain() ? "yes" : "no") << std::endl;
     std::cout << getCaptainStatus() << std::endl;
-    std::cout << "Crew alive: " << getCrewStatus().first << " Crew awake: " << getCrewStatus().second <<
+    std::cout << "Crew alive: " << getCrewStatus().first << " Crew awake: " << getCrewStatus().second << std::endl;
 }
 
 bool Ship::hasCaptain() {
@@ -18,6 +20,7 @@ bool Ship::hasCaptain() {
 
 void Ship::fillShip() {
 
+    // todo: Calling this in quick succession means all ships have the same sized crew...
     srand(time(nullptr));
     int num = rand()%100 + 1;
 
@@ -64,4 +67,8 @@ std::pair<int,int> Ship::getCrewStatus() {
         }
     }
     return std::make_pair(alive, awake);
+}
+
+bool Ship::battle(Ship* otherShip) {
+
 }
