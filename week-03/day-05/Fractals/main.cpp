@@ -67,7 +67,10 @@ int main(int argc, char *args[]) {
     // --------------------------------------------------------------------
     FractalGenerator frac(gRenderer, 6, 350);
 
-    FractalGenerator frac2(gRenderer, 6, SCREEN_HEIGHT / 3);
+    FractalGenerator frac3(gRenderer, 5, 350);
+
+    int sizeVar = SCREEN_WIDTH / 3;
+    bool growing = true;
 
     //Event handler
     SDL_Event e;
@@ -87,10 +90,25 @@ int main(int argc, char *args[]) {
         SDL_RenderClear(gRenderer);
 
         //draw(gRenderer);
-        SDL_SetRenderDrawColor(gRenderer, 1, 25, 54, 0xFF);
-        //frac.draw(FractalType ::TRIANGLE, 400, 350, 0, 0);
 
+        // frac.draw(FractalType ::TRIANGLE, 400, 350, 0, 0);
+
+        FractalGenerator frac2(gRenderer, 6, sizeVar);
+        SDL_SetRenderDrawColor(gRenderer, 1, 25, 54, 0xFF);
         frac2.draw(FractalType::CARPET, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0, 0);
+
+        if (sizeVar >= 400) {
+            growing = false;
+            sizeVar -= 2;
+        } else if (sizeVar < 400 && growing) {
+            sizeVar++;
+        } else if (!growing && sizeVar > SCREEN_WIDTH / 3) {
+            sizeVar--;
+        } else if (sizeVar <= SCREEN_WIDTH / 3) {
+            growing = true;
+        }
+
+        // frac3.draw(FractalType::TREE, SCREEN_WIDTH / 2, SCREEN_HEIGHT - 50, SCREEN_WIDTH / 2, SCREEN_HEIGHT - 60);
 
         //Update screen
         SDL_RenderPresent(gRenderer);

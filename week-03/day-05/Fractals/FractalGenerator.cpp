@@ -6,9 +6,9 @@ FractalGenerator::FractalGenerator(SDL_Renderer *renderer, int maxDepth, int siz
 
 void FractalGenerator::draw(FractalType type, int x0, int y0, int xm, int ym) {
     switch (type) {
-        case FractalType::TRIANGLE : drawTriangleFractal(x0, y0, _triangleSize, _triangleHeight, 0);
-        case FractalType::CARPET : drawCarpetFractal(x0, y0, _carpetSize, 0);
-        case FractalType::TREE :
+        case FractalType::TRIANGLE : drawTriangleFractal(x0, y0, _triangleSize, _triangleHeight, 0); break;
+        case FractalType::CARPET : drawCarpetFractal(x0, y0, _carpetSize, 0); break;
+        case FractalType::TREE : drawTreeFractal(x0, y0, xm, ym, 0); break;
     }
 }
 
@@ -63,5 +63,18 @@ void FractalGenerator::drawCarpetFractal(int cX, int cY, int side, int depth) {
         drawCarpetFractal(cX - side, cY + side, side / 3, depth + 1);
         drawCarpetFractal(cX, cY + side, side / 3, depth + 1);
         drawCarpetFractal(cX + side, cY + side, side / 3, depth + 1);
+    }
+}
+
+void FractalGenerator::drawTreeFractal(int x0, int y0, int xm, int ym, int depth) {
+
+    // First
+    SDL_RenderDrawLine(_renderer, x0, y0, xm, ym);
+
+    if (depth < _maxDepth) {
+        // Left
+        // Center
+        drawTreeFractal(xm, ym, xm - 10, ym - 10,depth + 1);
+        // Right
     }
 }

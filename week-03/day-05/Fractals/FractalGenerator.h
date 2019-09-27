@@ -18,6 +18,7 @@ public:
 
     void drawTriangleFractal(int x0, int y0, int side, float height, int depth);
     void drawCarpetFractal(int cX, int cY, int side, int depth);
+    void drawTreeFractal(int x0, int y0, int xm, int ym, int depth);
 
 private:
     int _maxDepth;
