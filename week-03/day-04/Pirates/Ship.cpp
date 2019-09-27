@@ -44,10 +44,9 @@ void Ship::makeCaptain() {
 
 std::string Ship::getCaptainStatus() {
     if (hasCaptain() && _crew[0]->isCaptain()) {
-        std::string str = "Captain is ";
-        str += (_crew[0]->isAlive() ? (_crew[0]->isAwake() ? "alive, awake, " : "alive, passed out, ") : "dead, ");
-        str += "drank " + std::to_string( _crew[0]->getDrunkenness()) + " rums.";
-        return str;
+        return std::string("Captain is ") +
+        (_crew[0]->isAlive() ? (_crew[0]->isAwake() ? "alive, awake, " : "alive, passed out, ") : "dead, ") +
+        "drank " + std::to_string( _crew[0]->getDrunkenness()) + " rums.";
     } else {
         return "The ship has no captain.";
     }

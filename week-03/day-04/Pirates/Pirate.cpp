@@ -8,6 +8,7 @@ Pirate::Pirate(): _intoxication(0), _alive(true), _awake(true), _captain(false){
 void Pirate::drinkSomeRum() {
     if(_alive && _awake) {
         _intoxication++;
+        // todo status updater
     } else if (!_alive) {
         std::cout << "He's dead." << std::endl;
     }
