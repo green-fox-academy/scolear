@@ -3,9 +3,13 @@
 #include <iostream>
 #include "Ship.h"
 
-Ship::Ship() : _captain(false), _capacity(100){}
+Ship::Ship() : _captain(false), _capacity(100){
+    fillShip();
+}
 
-Ship::Ship(std::string name) : _captain(false), _capacity(100), _name(name){}
+Ship::Ship(std::string name) : _captain(false), _capacity(100), _name(name){
+    fillShip();
+}
 
 void Ship::printStatus() {
     std::cout << "\nStatus: " << _name << std::endl;
