@@ -3,9 +3,7 @@
 #include <iostream>
 #include "Ship.h"
 
-Ship::Ship() : _captain(false), _capacity(100){
-    fillShip();
-}
+Ship::Ship() : Ship("noname"){}
 
 Ship::Ship(std::string name) : _captain(false), _capacity(100), _name(name){
     fillShip();

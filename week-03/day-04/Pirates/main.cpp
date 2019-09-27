@@ -16,6 +16,7 @@ int main() {
     pali.howsItGoingMate();
     jani.howsItGoingMate();
 
+
     Ship Beluga("Beluga");
     Beluga.fillShip();
     Beluga.printStatus();
@@ -29,6 +30,8 @@ int main() {
     Beluga.printStatus();
     Astra.printStatus();
 
+    Ship ship1;
+    ship1.printStatus();
 
     return 0;
 }
