@@ -43,19 +43,23 @@ void FractalGenerator::drawCarpetFractal(int cX, int cY, int side, int depth) {
     int halfSide = side / 2;
     SDL_Rect r = {cX - halfSide, cY - halfSide, side, side};
 
-    SDL_SetRenderDrawColor(_renderer, 0, 255, 255, 255 );
+
     SDL_RenderFillRect(_renderer, &r);
 
     if (depth < _maxDepth) {
         // Top row:
+        SDL_SetRenderDrawColor(_renderer, 1, 25, 54, 255 );
         drawCarpetFractal(cX - side, cY - side, side / 3, depth + 1);
         drawCarpetFractal(cX, cY - side, side / 3, depth + 1);
         drawCarpetFractal(cX + side, cY - side, side / 3, depth + 1);
         // Left:
+        SDL_SetRenderDrawColor(_renderer, 70, 83, 98, 255 );
         drawCarpetFractal(cX - side, cY, side / 3, depth + 1);
         // Right:
+        SDL_SetRenderDrawColor(_renderer, 130, 163, 161, 255 );
         drawCarpetFractal(cX + side, cY, side / 3, depth + 1);
         // Bottom row:
+        SDL_SetRenderDrawColor(_renderer, 159, 196, 144, 255 );
         drawCarpetFractal(cX - side, cY + side, side / 3, depth + 1);
         drawCarpetFractal(cX, cY + side, side / 3, depth + 1);
         drawCarpetFractal(cX + side, cY + side, side / 3, depth + 1);

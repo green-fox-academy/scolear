@@ -83,11 +83,11 @@ int main(int argc, char *args[]) {
         }
 
         //Clear screen
-        SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+        SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 0xFF);
         SDL_RenderClear(gRenderer);
 
         //draw(gRenderer);
-        SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0xFF);
+        SDL_SetRenderDrawColor(gRenderer, 1, 25, 54, 0xFF);
         //frac.draw(FractalType ::TRIANGLE, 400, 350, 0, 0);
 
         frac2.draw(FractalType::CARPET, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0, 0);
