@@ -65,7 +65,9 @@ int main(int argc, char *args[]) {
     bool quit = false;
 
     // --------------------------------------------------------------------
-    FractalGenerator frac(gRenderer, 6);
+    FractalGenerator frac(gRenderer, 6, 350);
+
+    FractalGenerator frac2(gRenderer, 6, SCREEN_HEIGHT / 3);
 
     //Event handler
     SDL_Event e;
@@ -86,7 +88,9 @@ int main(int argc, char *args[]) {
 
         //draw(gRenderer);
         SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0xFF);
-        frac.draw(FractalType ::TRIANGLE, 400, 350, 0, 0);
+        //frac.draw(FractalType ::TRIANGLE, 400, 350, 0, 0);
+
+        frac2.draw(FractalType::CARPET, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0, 0);
 
         //Update screen
         SDL_RenderPresent(gRenderer);
