@@ -5,7 +5,8 @@
 
 enum class FractalType {
     TRIANGLE,
-    CARPET
+    CARPET,
+    TREE
 };
 
 class FractalGenerator {

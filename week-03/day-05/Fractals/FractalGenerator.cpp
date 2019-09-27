@@ -8,6 +8,7 @@ void FractalGenerator::draw(FractalType type, int x0, int y0, int xm, int ym) {
     switch (type) {
         case FractalType::TRIANGLE : drawTriangleFractal(x0, y0, _triangleSize, _triangleHeight, 0);
         case FractalType::CARPET : drawCarpetFractal(x0, y0, _carpetSize, 0);
+        case FractalType::TREE :
     }
 }
 
@@ -42,7 +43,6 @@ void FractalGenerator::drawCarpetFractal(int cX, int cY, int side, int depth) {
 
     int halfSide = side / 2;
     SDL_Rect r = {cX - halfSide, cY - halfSide, side, side};
-
 
     SDL_RenderFillRect(_renderer, &r);
 
