@@ -1,15 +1,10 @@
-//
-// Created by scolear on 2019. 09. 30..
-//
 
 #include "Plant.h"
 
 Plant::Plant(std::string color) : _color(color) {
-
     _waterlevel = 0;
     _effectivity = 1;
     _waterNeeds = 10;
-
 }
 
 void Plant::waterPlant(float amount) {
