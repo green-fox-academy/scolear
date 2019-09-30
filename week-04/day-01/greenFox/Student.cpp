@@ -20,10 +20,10 @@ void Student::skipDays(int x) {
 }
 
 void Student::getGoal() {
-    std::cout << "My goal is: Be a junior software developer!";
+    std::cout << "My goal is: Be a junior software developer!" << std::endl;
 }
 
 void Student::introduce() {
-    std::cout << "Hi, I'm " << _name << ", a " << _age << " old " << _gender << " from " << _previousOrganization << " who skipped " << _skippedDays << " from the course already." << std::endl;
+    std::cout << "Hi, I'm " << _name << ", a " << _age << " old " << (_gender == Gender::MALE ? "male" : "female" ) << " from " << _previousOrganization << " who skipped " << _skippedDays << " days from the course already." << std::endl;
 
 }

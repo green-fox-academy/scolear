@@ -1,10 +1,5 @@
-//
-// Created by scolear on 2019. 09. 30..
-//
-
 #ifndef GREENFOX_COHORT_H
 #define GREENFOX_COHORT_H
-
 
 #include <string>
 #include <vector>
@@ -12,6 +7,13 @@
 #include "Mentor.h"
 
 class Cohort {
+public:
+    Cohort(std::string name);
+
+    void addStudent(Student*);
+    void addMentor(Mentor*);
+    void info();
+
 private:
     std::string _name;
     std::vector<Student*> _students;

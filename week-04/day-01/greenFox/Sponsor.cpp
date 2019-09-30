@@ -14,7 +14,7 @@ void Sponsor::hire() {
 }
 
 void Sponsor::getGoal() {
-    std::cout << "My goal is: Hire brilliant junior software developers.";
+    std::cout << "My goal is: Hire brilliant junior software developers." << std::endl;
 }
 
 void Sponsor::introduce() {
