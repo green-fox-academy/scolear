@@ -4,7 +4,7 @@
 Aircraft::Aircraft() : _ammunition(0), _maxAmmo(10), _baseDamage(0), _isPriority(false), _type("default") {}
 
 int Aircraft::fight() {
-    int allDamage = _baseDamage * _ammunition;
+    int allDamage = getTotalDamage();
     _ammunition = 0;
     return allDamage;
 }
@@ -31,9 +31,13 @@ std::string Aircraft::getType() {
 std::string Aircraft::getStatus() {
     return "Type " + _type + ", Ammo: " + std::to_string(_ammunition)
             + ", Base Damage: " + std::to_string(_baseDamage)
-            + ", All Damage: " + std::to_string(_baseDamage * _ammunition) + "\n";
+            + ", All Damage: " + std::to_string(getTotalDamage()) + "\n";
 }
 
 bool Aircraft::isPriority() {
     return _isPriority;
+}
+
+int Aircraft::getTotalDamage() {
+    return _baseDamage * _ammunition;
 }

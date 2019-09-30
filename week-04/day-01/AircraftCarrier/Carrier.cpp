@@ -16,21 +16,64 @@ int Carrier::maxAmmoNeeded() {
 }
 
 void Carrier::fill() {
-    /*
-     * It should fill all the aircraft with ammo and subtract the needed ammo from the ammo storage
-    If there is not enough ammo then it should start to fill the aircrafts with priority first
-    If there is no ammo when this method is called, it should throw an exception
-     */
+
     try {
         if (_ammo <= 0) {
             throw "No ammo left in carrier.";
+        } else if (_ammo < maxAmmoNeeded()){
+            for (Aircraft* pl : _aircrafts) {
+                if (pl->isPriority()) {
+                    _ammo = pl->refill(_ammo);
+                }
+            }
+            for (Aircraft* pl : _aircrafts) {
+                _ammo = pl->refill(_ammo);
+            }
         } else {
-
+            for (Aircraft* pl : _aircrafts) {
+                _ammo = pl->refill(_ammo);
+            }
         }
     } catch (const char* e){
         std::cout << e << std::endl;
     }
+}
 
+int Carrier::fireTotalDamage() {
+    int totalDamage = 0;
+    for (Aircraft* pl : _aircrafts) {
+        totalDamage += pl->fight();
+    }
+    return totalDamage;
+}
 
+int Carrier::getTotalDamage() {
+    int totalDamage = 0;
+    for (Aircraft* pl : _aircrafts) {
+        totalDamage += pl->getTotalDamage();
+    }
+    return totalDamage;
+}
 
+void Carrier::fight(Carrier* enemyCarrier) {
+    enemyCarrier->_health -= fireTotalDamage();
+}
+
+std::string Carrier::getStatus() {
+
+    std::string str;
+
+    if (_health <= 0) {
+        str = "It's dead Jim.";
+    } else {
+        str = "HP: " + std::to_string(_health) +
+                          ", Aircraft count: " + std::to_string(_aircrafts.size()) +
+                          ", Ammo storage: " + std::to_string(_ammo) +
+                          ", Total damage: " + std::to_string(getTotalDamage()) + "\n" +
+                          "Aircrafts:\n";
+        for (Aircraft* pl : _aircrafts){
+            str += pl->getStatus();
+        }
+    }
+    return str;
 }

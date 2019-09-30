@@ -14,6 +14,7 @@ public:
     std::string getType();
     std::string getStatus();
     bool isPriority();
+    int getTotalDamage();
 
 protected:
     int _maxAmmo;
