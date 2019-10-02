@@ -66,3 +66,21 @@ TEST(TestCase, Subtest6) {
     ASSERT_FALSE(isAnagram(str3, str4));
     ASSERT_TRUE(isAnagram(str1, str2));
 }
+
+// Letter counting function tester
+
+std::map<char, int> countLetters(std::string input) {
+
+    std::map<char, int> m;
+    for (int i = 0; i < input.length(); i++){
+        m[input[i]]++;
+    }
+    return m;
+}
+
+TEST(TestCase, countLettersTest) {
+    std::string testInput = "Anagramma";
+    ASSERT_EQ(countLetters(testInput)['A'], 1);
+    ASSERT_EQ(countLetters(testInput)['a'], 3);
+    ASSERT_EQ(countLetters(testInput)['b'], 0);
+}
