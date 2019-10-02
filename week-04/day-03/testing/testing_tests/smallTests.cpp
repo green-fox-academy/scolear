@@ -33,3 +33,36 @@ TEST(TestCase, Subtest5) {
     std::vector<int> intList = {12, -12, 5, 10};
     ASSERT_EQ(sum(intList), 15);
 }
+
+// Anagram checker testing:
+
+bool isAnagram(std::string first, std::string second) {
+
+    int firstLength = first.length();
+    int secondLength = second.length();
+
+    if (firstLength != secondLength) {
+        return false;
+    } else {
+        sort(first.begin(), first.end());
+        sort(second.begin(), second.end());
+
+        for (int i = 0; i < firstLength; ++i) {
+            if (first[i] != second[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+TEST(TestCase, Subtest6) {
+    std::string str1 = "anagram";
+    std::string str2 = "managra";
+
+    std::string str3 = "valami";
+    std::string str4 = "masvalami";
+
+    ASSERT_FALSE(isAnagram(str3, str4));
+    ASSERT_TRUE(isAnagram(str1, str2));
+}

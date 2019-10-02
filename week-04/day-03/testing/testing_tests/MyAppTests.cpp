@@ -5,8 +5,6 @@
 class myClassTest : public ::testing::Test {
 public:
     myClass klasszi;
-
-
 };
 
 TEST_F(myClassTest, Subtest1){
