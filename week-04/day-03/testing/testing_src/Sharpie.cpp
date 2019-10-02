@@ -8,6 +8,7 @@ Sharpie::Sharpie(std::string color, float width) {
 }
 
 void Sharpie::use() {
+
     if (_inkAmount > 0) {
         _inkAmount--;
     }
