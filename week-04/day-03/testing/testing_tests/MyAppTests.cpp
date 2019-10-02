@@ -17,6 +17,6 @@ TEST_F(myClassTest, Subtest1){
 
 TEST_F(myClassTest, Subtest2){
 
-    EXPECT_TRUE(klasszi.printName() == 0);
+    EXPECT_TRUE(klasszi.printName() == -1);
     std::cout << "After EXPECT" << std::endl;
 }
