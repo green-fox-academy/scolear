@@ -84,3 +84,27 @@ TEST(TestCase, countLettersTest) {
     ASSERT_EQ(countLetters(testInput)['a'], 3);
     ASSERT_EQ(countLetters(testInput)['b'], 0);
 }
+
+// Fibonacci number tester
+
+int fibonacciFinder(int index) {
+    int n1 = 0;
+    int n2 = 1;
+    int n3 = 1;
+
+    for (int i = 1; i < index; ++i) {
+        n3 = n1 + n2;
+        n1 = n2;
+        n2 = n3;
+    }
+    return n3;
+}
+
+TEST(TestCase, fibonacciTester) {
+    int index1 = 1;
+    int index2 = 2;
+    int index3 = 30;
+    ASSERT_EQ(fibonacciFinder(index1), 1);
+    ASSERT_EQ(fibonacciFinder(index2), 1);
+    ASSERT_EQ(fibonacciFinder(index3), 832040);
+}
