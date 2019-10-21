@@ -6,17 +6,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#define PI 3.14
-
-double areaOfCircle(double radius) {
-    return radius * radius * PI;
-}
-
-
+#include "circle.h"
 
 int main()
 {
-    printf("%lf", areaOfCircle(5.2));
+    double radius = 5.2;
+
+    printf("Are of circle with radius %.2lf : %.2lf\n", radius, areaOfCircle(radius));
+    printf("Circumference of circle with radius %.2lf : %.2lf\n", radius, circumference(radius));
+
     return 0;
 }
