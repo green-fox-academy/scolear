@@ -19,7 +19,7 @@ int main()
 
     printf("%s", append_a(str1));
 
-    // this does the same... :
+    // this does the same, obviously :
     // printf("%s\n", strcat(str1, "a"));
 
     return 0;
