@@ -126,8 +126,35 @@ void array_rotator(void *ptr, uint32_t bytes, uint32_t rotation_count, uint8_t r
             }
             PrintBinaryArray(byte_ptr, bytes);
         }
-    }
 
+    } else {            // shifting left
+
+        for (int k = 0; k < rotation_count; ++k) {
+            // left rotation, 1 step:
+            for (int i = 0; i < bytes; ++i) {
+                shifted[i] = (byte_ptr[i] & 0x80 ? 1 : 0);
+                byte_ptr[i] = rotate_left(byte_ptr[i], 1);
+            }
+
+            // applying the shifted bits to the previous element:
+            for (int j = 0; j < bytes; ++j) {
+                if (j == bytes - 1) {
+                    if (shifted[0]) {
+                        byte_ptr[j] = set_bit(byte_ptr[j], 0);
+                    } else {
+                        byte_ptr[j] = clear_bit(byte_ptr[j], 0);
+                    }
+                } else {
+                    if (shifted[j + 1]) {
+                        byte_ptr[j] = set_bit(byte_ptr[j], 0);
+                    } else {
+                        byte_ptr[j] = clear_bit(byte_ptr[j], 0);
+                    }
+                }
+            }
+            PrintBinaryArray(byte_ptr, bytes);
+        }
+    }
     free(shifted);
 }
 
@@ -157,13 +184,13 @@ int main() {
 
     // Array rotator driver:
 
-    uint8_t array[] = {0xAA, 0x55, 0x23};
+    uint8_t array[] = {0xAA, 0x55, 0x23, 0x32, 0xA3};
     uint32_t array_size = sizeof(array) / sizeof(array[0]);
     uint32_t rotation_count = 2;
 
     PrintBinaryArray(array, array_size);
 
-    array_rotator(array, array_size, 62, 1);
+    array_rotator(array, array_size, 300, 0);
 
     PrintBinaryArray(array, array_size);
 
