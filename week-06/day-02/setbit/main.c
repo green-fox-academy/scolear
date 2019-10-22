@@ -29,6 +29,13 @@ uint8_t clear_bit(uint8_t byte, char bit) {
     return byte & bitmask;
 }
 
+uint8_t toggle_bit(uint8_t byte, char bit) {
+
+    uint8_t bitmask = 0b00000001 << bit;
+
+    return byte ^ bitmask;
+}
+
 int main() {
     /*
      * Write a function called SetBit which takes a byte and a bit position
@@ -50,6 +57,17 @@ int main() {
 
     test = clear_bit(test, 2);
     PrintBinary(test);
+
+    /*
+     * Write a function called ToggleBit which takes a byte and a bit position
+     * and toggles the bit of byte in the specified bit position.
+     * E.g. byte = 0b1100, bit position = 1 => returns with 0b1110
+     * E.g. byte = 0b1100, bit position = 2 => returns with 0b1000
+     */
+
+    test = toggle_bit(test, 2);
+    PrintBinary(test);
+
 
     return 0;
 }
