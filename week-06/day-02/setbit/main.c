@@ -20,6 +20,15 @@ uint8_t set_bit(uint8_t byte, char bit) {
     return byte | bitmask;
 }
 
+uint8_t clear_bit(uint8_t byte, char bit) {
+
+    uint8_t bitmask = 0b00000001 << bit;
+
+    bitmask = ~bitmask;
+
+    return byte & bitmask;
+}
+
 int main() {
     /*
      * Write a function called SetBit which takes a byte and a bit position
@@ -30,9 +39,17 @@ int main() {
     uint8_t test = 0b00101100;
     PrintBinary(test);
 
-    uint8_t result;
-    result = set_bit(test, 1);
-    PrintBinary(result);
+    test = set_bit(test, 1);
+    PrintBinary(test);
+
+    /*
+     * Write a function called ClearBit which takes a byte and a bit position
+     * and clears the bit of byte in the specified bit position to 0.
+     * E.g. byte = 0b1100, bit position = 2 => returns with 0b1000
+     */
+
+    test = clear_bit(test, 2);
+    PrintBinary(test);
 
     return 0;
 }
