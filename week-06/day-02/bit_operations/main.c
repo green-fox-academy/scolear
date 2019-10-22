@@ -31,5 +31,26 @@ int main() {
     // 7. Create 0b11100101 value from myVar with a single bitwise operator
     // 8. Create 0b01011010 value form myVar with a single bitwise operator
 
+    myVar = myVar << 4;
+    PrintBinary(myVar);
+
+    myVar = 0b10100101;
+    myVar = myVar >> 2;
+    PrintBinary(myVar);
+
+    myVar = 0b10100101;
+    char bitmask = 0b00100000;
+    myVar = myVar & bitmask;
+    PrintBinary(myVar);
+
+    myVar = 0b10100101;
+    bitmask = 0b11100101;
+    myVar = myVar | bitmask;
+    PrintBinary(myVar);
+
+    myVar = 0b10100101;
+    myVar = ~myVar;
+    PrintBinary(myVar);
+
     return 0;
 }
