@@ -184,7 +184,7 @@ int main() {
 
     // Array rotator driver:
 
-    uint8_t array[] = {0xAA, 0x55, 0x23, 0x32, 0xA3};
+    uint8_t array[] = {0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF};
     uint32_t array_size = sizeof(array) / sizeof(array[0]);
     uint32_t rotation_count = 2;
 
