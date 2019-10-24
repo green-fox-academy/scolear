@@ -27,7 +27,7 @@
 
 #define CURRENT_YEAR 2019
 
-enum transmission{
+enum transmission {
     MANUAL,
     AUTOMATIC,
     CVT,
