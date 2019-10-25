@@ -111,6 +111,7 @@ void array_rotator(void *ptr, uint32_t bytes, uint32_t rotation_count, uint8_t r
             // applying the shifted bits to the next element:
             for (int j = 0; j < bytes; ++j) {
                 if (j == 0) {
+                    // write_bit(byteptr+j, shiftedb1, 7)
                     if (shifted[bytes - 1]) {
                         byte_ptr[j] = set_bit(byte_ptr[j], 7);
                     } else {
