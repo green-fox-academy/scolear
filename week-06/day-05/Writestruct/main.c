@@ -69,7 +69,7 @@ int main() {
 
     infile = fopen("../persons.dat", "rb");
     for (int i = 0; i < size_of_people; ++i) {
-        fread(&people2[i], sizeof(person_t), 1, outfile);
+        fread(&people2[i], sizeof(person_t), 1, infile);
     }
     fclose(infile);
 
