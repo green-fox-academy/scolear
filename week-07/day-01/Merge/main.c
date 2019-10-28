@@ -49,7 +49,7 @@ int main()
 
     for (int j = 0; j < 10; ++j) {
         if (j % 2 == 0) {
-            *(pointer2 + j) = j + 1;
+            *(pointer2 + j) = j + 11;
         } else {
             *(pointer2 + j) = j;
         }
@@ -81,6 +81,8 @@ int main()
     printf("\n");
     printf("Sorted array: \n");
     printArray(pointer, n);
+
+    free(pointer);
 
     return 0;
 }
