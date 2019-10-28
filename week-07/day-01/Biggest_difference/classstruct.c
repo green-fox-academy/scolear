@@ -89,3 +89,9 @@ double find_average(class_t *classes, int num_of_classes) {
     }
     return (double)sum_total / students_total;
 }
+
+void free_all(class_t *classes, int num_of_classes) {
+    for (int i = 0; i < num_of_classes; ++i) {
+        free(classes);
+    }
+}

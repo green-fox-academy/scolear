@@ -39,5 +39,7 @@ int main()
 
     printf("Average score of all exams: %.2lf\n", find_average(classes, num_of_classes));
 
+    free_all(classes, num_of_classes);
+
     return 0;
 }

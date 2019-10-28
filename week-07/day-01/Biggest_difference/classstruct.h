@@ -18,4 +18,6 @@ void print_largest_diff(class_t *classes, int num_of_classes);
 void print_best_result(class_t *classes, int num_of_classes);
 double find_average(class_t *classes, int num_of_classes);
 
+void free_all(class_t *classes, int num_of_classes);
+
 #endif //BIGGEST_DIFFERENCE_CLASSSTRUCT_H
