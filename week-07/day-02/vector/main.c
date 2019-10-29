@@ -1,7 +1,11 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 #include "vector.h"
 
 int main() {
+
+    srand(time(NULL));
 
     vector_t vec;
     error_t result;
@@ -24,6 +28,12 @@ int main() {
 
     insert_at(&vec, 2, 29, &result);
     insert_at(&vec, 0, 11, &result);
+    insert_at(&vec, 0, 11, &result);
+    insert_at(&vec, 0, 11, &result);
+    print(&vec, &result);
+
+    printf("Erasing duplicate elements...\n");
+    unique(&vec, &result);
     print(&vec, &result);
 
     printf("Value 29 can be found at index: %d\n", find_value(&vec, 29, &result));
@@ -36,6 +46,10 @@ int main() {
     pop_at(&vec, 5, &result);
     print(&vec, &result);
     printf("Element at %d: %d\n", 5, element_at(&vec, 5, &result));
+
+    printf("Shuffling...\n");
+    shuffle(&vec, &result);
+    print(&vec, &result);
 
     for (int i = 0; i < 10; ++i) {
         pop_back(&vec, &result);

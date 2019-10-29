@@ -28,10 +28,12 @@ int capacity_of(vector_t* vec, error_t* result);
 bool is_empty(vector_t* vec, error_t* result);
 void pop_back(vector_t* vec, error_t* result);
 void pop_at(vector_t* vec, int index, error_t* result);
-
 void destroy(vector_t* vec, error_t* result);
 void print(vector_t* vec, error_t* result);
 
-// todo: delete.at
+void swap (int *a, int *b);
+void shuffle(vector_t* vec, error_t* result);
+void unique(vector_t* vec, error_t* result);
+void transform(vector_t* vec, int (*function)(int num));
 
 #endif //VECTOR_VECTOR_H

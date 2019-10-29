@@ -24,7 +24,7 @@ void push_back(vector_t* vec, int new_data, error_t* result) {
 }
 
 void insert_at(vector_t* vec, int index, int new_data, error_t* result) {
-    *result = NO_ERROR;
+    *result = NO_ERROR; // todo: error handling
     if (vec->size >= vec->capacity) {
         resize(vec, vec->capacity * 2, result);
     }
@@ -108,4 +108,36 @@ void print(vector_t* vec, error_t* result) {
         else               printf("_, ");
     }
     printf("}\n");
+}
+
+void swap (int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void shuffle(vector_t* vec, error_t* result) {
+    *result = NO_ERROR;
+    for (int i = vec->size - 1; i > 0; i--) {
+        // Pick a random index from 0 to i
+        int j = rand() % (i + 1);
+        // Swap arr[i] with the element at random index
+        swap(&vec->data[i], &vec->data[j]);
+    }
+}
+
+void unique(vector_t* vec, error_t* result) {
+    *result = NO_ERROR;
+    for (int i = 0; i < vec->size; ++i) {
+        for (int j = i + 1; j < vec->size; ++j) {
+            if (vec->data[i] == vec->data[j]) {
+                pop_at(vec, j, result);
+                j--;
+            }
+        }
+    }
+}
+
+void transform(vector_t* vec, int (*function)(int num)) {
+    
 }
