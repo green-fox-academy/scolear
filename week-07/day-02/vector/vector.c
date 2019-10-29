@@ -139,5 +139,5 @@ void unique(vector_t* vec, error_t* result) {
 }
 
 void transform(vector_t* vec, int (*function)(int num)) {
-    
+
 }
