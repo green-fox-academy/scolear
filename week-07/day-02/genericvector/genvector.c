@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "vector.h"
+#include "genvector.h"
 
 void init(vector_t* vec, int size, error_t* result) {
     *result = NO_ERROR;
@@ -8,22 +8,22 @@ void init(vector_t* vec, int size, error_t* result) {
         *result = WRONG_ARGUMENT;
         return;
     }
-    vec->data = (int *) calloc(size, sizeof(int));
+    vec->data = (void *) malloc(size * sizeof(void *));
     vec->capacity = size;
     vec->size = 0;
 }
 
-void push_back(vector_t* vec, int new_data, error_t* result) {
+void push_back(vector_t* vec, void* new_data, error_t* result) {
     *result = NO_ERROR;
     if (vec->size >= vec->capacity) {
         vec->capacity *= 2;
-        vec->data = (int *) realloc(vec->data, vec->capacity * sizeof(int));
+        vec->data = (void *) realloc(vec->data, vec->capacity * sizeof(void *));
     }
     vec->data[vec->size] = new_data;
     vec->size++;
 }
 
-int element_at(vector_t* vec, int at, error_t* result) {
+void* element_at(vector_t* vec, int at, error_t* result) {
     *result = NO_ERROR;
     if (at < 0 || at > vec->size - 1) {
         *result = OUT_OF_BOUNDS;
@@ -41,22 +41,6 @@ void pop_back(vector_t* vec, error_t* result) {
     vec->size--;
     if (vec->size < vec->capacity / 2) {
         vec->capacity /= 2;
-        vec->data = (int *) realloc(vec->data, vec->capacity * sizeof(int));
+        vec->data = (void *) realloc(vec->data, vec->capacity * sizeof(void*));
     }
-}
-
-void destroy(vector_t* vec, error_t* result) {
-    *result = NO_ERROR;
-    vec->size = 0;
-    vec->capacity = 0;
-    free(vec->data);
-}
-
-void print(vector_t* vec, error_t* result) {
-    *result = NO_ERROR;
-    printf("Size: %d, Capacity: %d, Data: {", vec->size, vec->capacity);
-    for (int i = 0; i < vec->size; ++i) {
-        printf("%d, ", vec->data[i]);
-    }
-    printf("}\n");
 }
