@@ -9,5 +9,6 @@ void print_usage();
 void print_size(FILE* fptr);
 void print_width(FILE* fptr);
 void print_height(FILE* fptr);
+void print_depth(FILE* fptr);
 
 #endif //ASCIIGEN_ASCIIGEN_H

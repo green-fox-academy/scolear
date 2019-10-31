@@ -33,7 +33,7 @@ void print_width(FILE* fptr)
     unsigned char buffer[30];
     fread(buffer, sizeof(unsigned char),30, fptr);
     int* width_int_ptr = (int *) &buffer[18];
-    printf("Width: %d\n", *(width_int_ptr));
+    printf("Width: %d pixels\n", *(width_int_ptr));
     rewind(fptr);
 }
 
@@ -42,10 +42,18 @@ void print_height(FILE* fptr)
     unsigned char buffer[50];
     fread(buffer, sizeof(unsigned char),50, fptr);
     int* height_int_ptr = (int *) &buffer[22];
-    printf("Height: %d\n", *(height_int_ptr));
+    printf("Height: %d pixels\n", *(height_int_ptr));
     rewind(fptr);
 }
 
+void print_depth(FILE* fptr)
+{
+    unsigned char buffer[50];
+    fread(buffer, sizeof(unsigned char),50, fptr);
+    int* depth_int_ptr = (int *) &buffer[0x1C];
+    printf("Depth: %d bits\n", *(depth_int_ptr));
+    rewind(fptr);
+}
 
 /*
     for (int i = 0; i < 50; ++i) {

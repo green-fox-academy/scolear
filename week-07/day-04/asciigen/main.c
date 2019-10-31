@@ -25,6 +25,7 @@ int main(int argc, char *argv[]) {
     print_size(input);
     print_width(input);
     print_height(input);
+    print_depth(input);
 
     return 0;
 }
