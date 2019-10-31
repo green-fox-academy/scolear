@@ -22,30 +22,33 @@ void print_usage()
 void print_size(FILE* fptr)
 {
     unsigned char buffer[6];
-    fread(buffer, sizeof(char),6, fptr);
+    fread(buffer, sizeof(unsigned char),6, fptr);
     int* size_int_ptr = (int *) &buffer[2];
     printf("Size: %d\n", *(size_int_ptr));
+    rewind(fptr);
 }
 
 void print_width(FILE* fptr)
 {
     unsigned char buffer[30];
-    rewind(fptr);
-    fread(buffer, sizeof(char),30, fptr);
-    int* width_int_ptr = (int *) &buffer[12];
+    fread(buffer, sizeof(unsigned char),30, fptr);
+    int* width_int_ptr = (int *) &buffer[18];
     printf("Width: %d\n", *(width_int_ptr));
+    rewind(fptr);
 }
 
 void print_height(FILE* fptr)
 {
     unsigned char buffer[50];
+    fread(buffer, sizeof(unsigned char),50, fptr);
+    int* height_int_ptr = (int *) &buffer[22];
+    printf("Height: %d\n", *(height_int_ptr));
     rewind(fptr);
-    fread(buffer, sizeof(char),50, fptr);
+}
 
+
+/*
     for (int i = 0; i < 50; ++i) {
         printf("%d: %d\n", i, buffer[i]);
     }
-
-    int* height_int_ptr = (int *) &buffer[22];
-    printf("Height: %d\n", *(height_int_ptr));
-}
+ */
