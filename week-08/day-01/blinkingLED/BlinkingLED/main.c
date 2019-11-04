@@ -63,24 +63,46 @@ void counterToggle(uint8_t *limit)
 	}
 }
 
+void custom_delay_ms(int ms)
+{
+	for (int i = 0; i < ms; i++) {
+		_delay_ms(1);
+	}
+}
+
+void blink_at_mhz(int mhertz)
+{
+	int delay_time = 500000 / mhertz;
+	
+	PORTB = 1 << 5;
+	custom_delay_ms(delay_time);
+	PORTB = 0 << 5;
+	custom_delay_ms(delay_time);
+}
+
 int main(void)
 {
 	
 	DDRB = 1 << 5;
 	
-	uint8_t ON = 0;
-	uint8_t counter = 0;
+	//uint8_t ON = 0;
+	//uint8_t counter = 0;
+	
+	// freqs in millihertz
+	int frequencies[6] = {500, 1000, 2000, 4000, 2000, 1000};
 	
     while (1)
     {
 		//blinkingLED();
-		
 		//toggleLED(&ON);
-		
 		//blocking(&ON);
+		//counterToggle(&counter);
 		
-		counterToggle(&counter);
-		
+		for (int j = 0; j < 6; j++) {
+			for (int i = 0; i < 3; i++) {
+				blink_at_mhz(frequencies[j]);
+			}
+		}
     }
 }
 
