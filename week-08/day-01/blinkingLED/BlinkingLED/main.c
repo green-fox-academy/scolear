@@ -1,18 +1,22 @@
-/*
- * BlinkingLED.c
- *
- * Created: 2019. 11. 04. 11:14:53
- * Author : bobte
- */ 
-
 #include <avr/io.h>
-
+#define F_CPU 16000000
+#include <util/delay.h>
 
 int main(void)
 {
-    /* Replace with your application code */
+	
+	DDRB = 1 << 5;
+	
     while (1) 
     {
+		if (!(PINB & (1<<PINB7))) {
+			PORTB = 1 << 5;
+			_delay_ms(250);
+			PORTB = 0 << 5;
+			_delay_ms(250);	
+		} else {
+			PORTB = 0 << 5;
+		}
     }
 }
 
