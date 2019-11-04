@@ -6,6 +6,7 @@ void blinkingLED()
 {
 	// Make the green user LED flash with a frequency of 4 Hz (blink 4 times per second) while the user pushbutton is pressed.
 	// If the button is not pressed the LED should not be lit.
+	
 	if (!(PINB & (1<<PINB7))) {
 		PORTB = 1 << 5;
 		_delay_ms(250);
@@ -34,6 +35,23 @@ void toggleLED(uint8_t *ON)
 	}
 }
 
+void blocking(uint8_t *flag)
+{
+	// Make the green user LED flash with a frequency of 2 Hz but do not start until the user button is pushed.
+	// Once it is pushed the LED should be blinking forever.
+	
+	if (*flag) {
+		PORTB = 1 << 5;
+		_delay_ms(250);
+		PORTB = 0 << 5;
+		_delay_ms(250);
+	} else {
+		if (!(PINB & (1<<PINB7))) {
+			*flag = 1;
+		}
+	}
+}
+
 int main(void)
 {
 	
@@ -43,7 +61,10 @@ int main(void)
 	
     while (1)
     {
-		toggleLED(&ON);
+		//toggleLED(&ON);
+		
+		blocking(&ON);
+		
     }
 }
 
