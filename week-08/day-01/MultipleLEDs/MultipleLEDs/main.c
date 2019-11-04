@@ -23,23 +23,41 @@ void knight_rider()
 	}
 }
 
-void knight_rider_circular()
+void knight_rider_circular(uint8_t direction_flag)
 {
-	for (int i = 1; i < 5; i++) {
-		PORTB = 1 << i;
-		_delay_ms(150);
+	if (direction_flag) {
+		for (int i = 1; i < 5; i++) {
+			PORTB = 1 << i;
+			_delay_ms(150);
+		}
+	} else {
+		for (int i = 4; i > 0; i--) {
+			PORTB = 1 << i;
+			_delay_ms(150);
+		}
 	}
 }
 
 int main(void)
 {
 	DDRB = 0b00011110;
+	uint8_t direction = 1;
 	
     while (1)
     {
 		//blink_at_1_Hz();
 		//knight_rider();
-		knight_rider_circular();
+		
+		if ((PINC & (1<<PINC5))) {
+			_delay_ms(10);
+			if (direction) {
+				direction = 0;
+			} else {
+				direction = 1;
+			}
+		}
+		
+		knight_rider_circular(direction);
     }
 }
 
