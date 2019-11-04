@@ -19,10 +19,9 @@ void blinkingLED()
 
 void toggleLED(uint8_t *ON)
 {
-	/*
-	Toggle the green user LED with the user button.
-	A push should turn on the LED if it is turned off and it should turn the LED off if it's already turned on.
-	*/
+	//Toggle the green user LED with the user button.
+	//A push should turn on the LED if it is turned off and it should turn the LED off if it's already turned on.
+	
 	if (!(PINB & (1<<PINB7))) {
 		_delay_ms(200);
 		if (*ON) {
@@ -52,18 +51,35 @@ void blocking(uint8_t *flag)
 	}
 }
 
+void counterToggle(uint8_t *limit)
+{
+	if (!(PINB & (1<<PINB7))) {
+		_delay_ms(250);
+		(*limit)++;
+	}
+	
+	if (*limit >= 5) {
+		PORTB = 1 << 5;
+	}
+}
+
 int main(void)
 {
 	
 	DDRB = 1 << 5;
 	
 	uint8_t ON = 0;
+	uint8_t counter = 0;
 	
     while (1)
     {
+		//blinkingLED();
+		
 		//toggleLED(&ON);
 		
-		blocking(&ON);
+		//blocking(&ON);
+		
+		counterToggle(&counter);
 		
     }
 }
