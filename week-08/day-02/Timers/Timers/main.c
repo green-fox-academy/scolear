@@ -11,7 +11,14 @@ void init()
 
 int main(void)
 {
-    // Don't forget to call the init function!
+    // Create a variable which will be a counter variable, initialize it with 0.
+    uint8_t counter = 0;
+    // This will be the maximal value of our counter
+    const uint8_t cntr_max = 30;
+
+    // Your task is to create about 1Hz flashing LED with the TC0 timer.
+    // Use the counter variable, cntr_max and the overflow flag as a hint.
+
     init();
 
     while (1)
@@ -20,9 +27,14 @@ int main(void)
         // (this will clear it, it's confusing, but this is how it works)
         if (TIFR0 & 0x01)
         {
-            TIFR0 &= 0 << 0;
-            PORTB = 1 << PORTB5;
+            counter++;
+            TIFR0 |= 1 << 0;
         }
-        PORTB = 0 << PORTB5;
+
+        if (counter >= cntr_max)
+        {
+            PINB = 1 << PINB5;
+            counter = 0;
+        }
     }
 }
