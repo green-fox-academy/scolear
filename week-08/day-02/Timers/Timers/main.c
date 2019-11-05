@@ -5,10 +5,6 @@
 uint8_t counter = 0;
 const uint8_t cntr_max = 30;
 
-// Write here the interrupt handler function. The vector name starts with TIMER ;). Use Ctrl+Space to find the proper vector name!
-// Do the same thing in the interrupt handler as before.
-// This time you don't have to do anything with the flags, the MCU does it automatically.
-
 ISR(TIMER0_OVF_vect)
 {
     counter++;
@@ -57,5 +53,6 @@ int main(void)
 
     while (1)
     {
+        // manual_overflow_counter(&counter, cntr_max);
     }
 }
