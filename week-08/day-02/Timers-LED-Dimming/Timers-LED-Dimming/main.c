@@ -13,9 +13,6 @@
 // about 240Hz frequency. You should use the Output Compare A Match Interrupt
 // and the Overflow Interrupt to implement the behavior!
 
-//TIMER0 COMPA 
-//TIMER0 OVF 
-// OCR0A -- output compare A
 
 ISR(TIMER0_COMPA_vect)
 {
@@ -32,10 +29,10 @@ void init()
     TCCR0B |= 0b00000101; // start clock with 1024 prescaling
     
     TIMSK0 |= 1 << 0; // overflow interrupt enable
-    TIMSK0 |= 1 << 1; // output compare enable
+    TIMSK0 |= 1 << 1; // output compare interrupt enable
     sei();
     
-    OCR0A = 10;
+    OCR0A = 50; // output compare register value
     
     DDRB |= 1 << 5;
 }
