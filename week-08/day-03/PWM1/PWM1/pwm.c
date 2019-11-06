@@ -1,7 +1,7 @@
 #include "pwm.h"
 #include <avr/io.h>
 
-void timer_init(pwm_t type)
+void timer0_init(pwm_t type)
 {
     DDRD = 1 << DDRD6;      // set pd6 as output
     
@@ -13,8 +13,14 @@ void timer_init(pwm_t type)
         case PHASE_CORRECT:
             TCCR0A = 0b10000001;    // PHASE Correct PWM MODE
             TCCR0B = 0b00000010;    //
-            break;    
+            break;
     }
+}
+
+void timer1_init() 
+{
+    TCCR2B = 0b00000111;
+    TIMSK2 |= 1 << 0;
 }
 
 void set_duty(uint8_t duty)

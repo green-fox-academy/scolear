@@ -10,7 +10,8 @@ typedef enum pwm_type {
 } pwm_t;
 
 
-void timer_init(pwm_t type);
+void timer0_init(pwm_t type);
+void timer1_init();
 void set_duty(uint8_t duty);
 
 
