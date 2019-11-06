@@ -25,6 +25,6 @@ void timer1_init()
 
 void set_duty(uint8_t duty)
 {
-    // Compare value depending on incoming duty cycle percentage
+    // Compare_value depending on incoming duty cycle percentage
     OCR0A = duty * 255 / 100;
 }
