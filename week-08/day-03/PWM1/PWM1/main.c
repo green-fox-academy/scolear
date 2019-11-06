@@ -42,17 +42,14 @@ int main(void)
         set_duty(duty);
         _delay_ms(100);
         
-        if (brighten)
-        {
+        if (brighten) {
             duty += 5;
             
             if (duty >= 100)
             {
                 duty = 100;
             }
-        }
-        else
-        {
+        } else {
             duty -= 5;
             if (duty <= 0)
             {
