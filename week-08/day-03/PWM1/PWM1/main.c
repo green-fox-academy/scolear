@@ -5,20 +5,22 @@
 
 void init()
 {
-    timer_init();
+    // pwm_t type = FAST_PWM;
+    pwm_t type = PHASE_CORRECT;
+    timer_init(type);
 }
 
 int main(void)
 {
     init();
     
-    uint8_t duty = 255 / 4;
+    uint8_t duty = 0;
     
     while (1) 
     {
         set_duty(duty);
         _delay_ms(100);
-        duty += 5;
+        duty += 2;
         
         if (duty >= 100)
         {

@@ -4,7 +4,13 @@
 
 #include <stdint.h>
 
-void timer_init();
+typedef enum pwm_type {
+    FAST_PWM,
+    PHASE_CORRECT
+} pwm_t;
+
+
+void timer_init(pwm_t type);
 void set_duty(uint8_t duty);
 
 
