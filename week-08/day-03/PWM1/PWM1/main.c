@@ -46,18 +46,18 @@ int main(void)
         {
             duty += 5;
             
-            /*if (duty >= 100)
+            if (duty >= 100)
             {
-                duty = 0;
-            }*/
+                duty = 100;
+            }
         }
         else
         {
             duty -= 5;
-            /*if (duty <= 0)
+            if (duty <= 0)
             {
-                duty = 100;
-            }*/
+                duty = 0;
+            }
         }
     }
 }
