@@ -24,14 +24,14 @@ void timer0_init(pwm_t type)
 
 void set_duty(uint8_t duty_byte)
 {
-    // Compare_value depending on incoming duty cycle percentage
+    // Compare_value
     OCR0A = duty_byte;
 }
 
 void init()
 {
-    ADMUX |= 1 << 5;        // left adjusted result
-    ADCSRA |= 0b11100000;
+    ADMUX |= 1 << 5;        // left adjusted result, ADCL is least significant 2 bits. When not set, ADCL is 8 bits.
+    ADCSRA |= 0b11100000;   // ADC is Enabled [7], Start [6], Auto Trigger Enable [5]
     ADCSRB |= 0;
 }
 
