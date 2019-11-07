@@ -38,7 +38,8 @@ void init()
 int main(void)
 {
     init();
-    timer0_init(PHASE_CORRECT);
+    //timer0_init(PHASE_CORRECT);
+    timer0_init(FAST_PWM);
     
     uint8_t result;
     uint8_t result2;
@@ -51,6 +52,6 @@ int main(void)
         // combination_result = ((uint16_t) result2 << 8) | result;
 
         set_duty(result2);
-        _delay_ms(100);
+        //_delay_ms(100);
     }
 }
