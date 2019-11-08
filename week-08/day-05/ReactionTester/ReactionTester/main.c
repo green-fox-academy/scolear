@@ -18,7 +18,6 @@ game_state gamestate = STANDBY;
 
 ISR(INT0_vect)
 {
-    // start game
     if (gamestate == STANDBY)
     {
         start_game();
@@ -48,7 +47,6 @@ ISR(INT1_vect)
 
 ISR(TIMER0_OVF_vect)
 {
-    // STANDBY mode
      counter++;
 
      if (counter >= cntr_max)
@@ -75,12 +73,9 @@ void start_game()
 {
     stop_timer0();
     turn_LED_off();
-    random_time_ms = (rand() % 8000) + 1000;
-    
-    // start timer2, start_countdown()
+    random_time_ms = (rand() % 7000) + 1000;
     gamestate = COUNTDOWN;
     start_timer2();
-    
 }
 
 void restart_game()
@@ -90,7 +85,6 @@ void restart_game()
     gamestate = STANDBY;
     counter = 0;
     countdown_counter = 0;
-    
 }
 
 void init()
@@ -113,4 +107,3 @@ int main(void)
         standby(gamestate);
     }
 }
-
