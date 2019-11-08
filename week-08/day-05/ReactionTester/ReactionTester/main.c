@@ -1,39 +1,102 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <time.h>
+#include <stdint.h>
 #define F_CPU 16000000
 #include <util/delay.h>
 
-// todo : define interrupts
+#include "reaction.h"
+
+void start_game();
+void restart_game();
+
+uint8_t counter = 0;
+const uint8_t cntr_max = 30;
+int countdown_counter = 0;
+int random_time_ms = 4000;
+game_state gamestate = STANDBY;
 
 ISR(INT0_vect)
 {
-    
+    // start game
+    if (gamestate == STANDBY)
+    {
+        start_game();
+    }
 }
 
 ISR(INT1_vect)
 {
-    //game
+    // reaction trigger
+    if (gamestate == COUNTDOWN) {
+        RGB_BLUE_on();
+        stop_timer2();
+        _delay_ms(3000);
+        restart_game();
+    } else if (gamestate == GAME && countdown_counter < 500) {
+        RGB_GREEN_on();
+        stop_timer2();
+        _delay_ms(3000);
+        restart_game();
+    } else if (gamestate == GAME && countdown_counter >= 500) {
+        RGB_RED_on();
+        stop_timer2();
+        _delay_ms(3000);
+        restart_game();
+    }
 }
 
-void LED_init()
+ISR(TIMER0_OVF_vect)
 {
-    DDRC |= 0b00100111;
-    PINC |= 0b11111111;
+    // STANDBY mode
+     counter++;
+
+     if (counter >= cntr_max)
+     {
+         PORTC ^= 0b00100000;    // red LED blinking
+         counter = 0;
+     }
 }
 
-void BUTTON_init()
+ISR(TIMER2_OVF_vect)
 {
-    //PCICR |= 0b00000011;
-    //PCMSK0 |= 1 << 0;
-    //PCMSK1 |= 1 << 0;
+    countdown_counter++;
     
-    // Using external interrupts instead:
-    EIMSK |= 0b00000011;    // enable external interrupts
-    EICRA |= 0b00001010;    // external interrupt modes
+    if (gamestate == COUNTDOWN && countdown_counter >= random_time_ms)
+    {
+        // times up, light up led, reset timer;
+        PORTC = 0b11011111;
+        countdown_counter = 0;
+        gamestate = GAME;
+    }
+}
+
+void start_game()
+{
+    stop_timer0();
+    turn_LED_off();
+    random_time_ms = (rand() % 8000) + 1000;
+    
+    // start timer2, start_countdown()
+    gamestate = COUNTDOWN;
+    start_timer2();
+    
+}
+
+void restart_game()
+{
+    stop_timer0();
+    turn_LED_off();
+    gamestate = STANDBY;
+    counter = 0;
+    countdown_counter = 0;
+    
 }
 
 void init()
 {
+    srand(time(NULL));
+    
     LED_init();
     BUTTON_init();
     
@@ -47,8 +110,7 @@ int main(void)
     
     while (1) 
     {
-        PORTC ^= 0b00100000;    // red LED blinking
-        _delay_ms(1000);
+        standby(gamestate);
     }
 }
 
