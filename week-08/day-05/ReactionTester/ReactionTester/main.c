@@ -7,7 +7,7 @@
 
 ISR(INT0_vect)
 {
-    PORTC ^= 0b00100000;    //turn red led on
+    
 }
 
 ISR(INT1_vect)
@@ -27,10 +27,9 @@ void BUTTON_init()
     //PCMSK0 |= 1 << 0;
     //PCMSK1 |= 1 << 0;
     
+    // Using external interrupts instead:
     EIMSK |= 0b00000011;    // enable external interrupts
     EICRA |= 0b00001010;    // external interrupt modes
-    
-    
 }
 
 void init()
@@ -48,7 +47,8 @@ int main(void)
     
     while (1) 
     {
-        
+        PORTC ^= 0b00100000;    // red LED blinking
+        _delay_ms(1000);
     }
 }
 
