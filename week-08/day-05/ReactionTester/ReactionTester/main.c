@@ -97,7 +97,6 @@ void init()
     sei();
 }
 
-
 int main(void)
 {
     init();
