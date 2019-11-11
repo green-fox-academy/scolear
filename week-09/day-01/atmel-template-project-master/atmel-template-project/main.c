@@ -47,7 +47,7 @@ void init() {
     eeprom_update_word((uint16_t*)var_16bit_address, var_16bit);
     eeprom_update_dword((uint32_t*)var_32bit_address, var_32bit);
     eeprom_update_float((float*)var_float_address, var_float);
-    
+    eeprom_update_block ((const void *) array, (void *) var_array_address, sizeof(array));
 #endif
 
 #ifdef READ_FROM_EEPROM
@@ -56,16 +56,14 @@ void init() {
     var_16bit = eeprom_read_word((uint16_t*)var_16bit_address);
     var_32bit = eeprom_read_dword((uint32_t*)var_32bit_address);
     var_float = eeprom_read_float((float*)var_float_address);
-    
+    eeprom_read_block ((void *) array, (const void *) var_array_address, sizeof(array)) ;
 #endif
 }
 
 int main(void)
 {
 	char buffer[32];
-	// SDIO lib is initialed with 115200 baud rate with 8N1 settings
 	init();
-	// Interrupts must be enabled as STDIO lib uses interrupts for receive
 	sei();
 	
 	printf("System initialized\n");
