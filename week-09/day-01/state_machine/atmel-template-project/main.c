@@ -1,4 +1,3 @@
-  
 #include <avr/io.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -25,11 +24,13 @@ typedef enum program_state {
 
 program_state_t state;
 
-ISR(PCINT0_vect){
+ISR(PCINT0_vect)
+{
     PORTB ^= 1 << PORTB5;
 }
 
-ISR(USART_RX_vect) {
+ISR(USART_RX_vect)
+{
     switch (UDR0) {
         case 't': 
             state = LED_PUSHBUTTON; 
@@ -67,7 +68,6 @@ void UART_Init()
 
     // Enable RX interrupt
     UCSR0B |= 1 << 7;
-
 }
 
 void UART_SendCharacter(char character)
@@ -93,15 +93,15 @@ void init() {
     // Initialize the LED pin
     DDRB |= 1 << DDRB5;
 
+    // pin change interrupt enable
     PCICR |= 1 << PCIE0;
     
+    // global interrupt enable    
     sei();
 }
 
 int main(void)
 {
-	// SDIO lib is initialed with 115200 baud rate with 8N1 settings
-    
     // Setting up STDIO input and output buffer
     // You don't have to understand this!
     //----- START OF STDIO IO BUFFER SETUP
@@ -111,19 +111,15 @@ int main(void)
     stdin = &UART_input;
     //----- END OF STDIO IO BUFFER SETUP
     
-	// Don't forget to call the Init() function :)
 	init();
     printf("System initialized\n");
 
-	// TODO:
 	// Initialize the state to LED blinker mode
     state = LED_BLINKER;
     
     char buffer[32];
-    
-	// Infinite loop
-	while (1) {
 
+	while (1) {
         switch (state) {
             case LED_BLINKER :
                 PCMSK0 = 0;
