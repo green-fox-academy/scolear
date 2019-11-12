@@ -1,15 +1,14 @@
   
-  #include <avr/io.h>
-  #include <stdint.h>
-  #include <stdio.h>
-  #include <avr/interrupt.h>
-  #include <string.h>
-  //#include <STDIO_lib.h>
+#include <avr/io.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <avr/interrupt.h>
+#include <string.h>
+//#include <STDIO_lib.h>
 
-  #define F_CPU 16000000
-  #include <util/delay.h>
-  
-  // TODO:
+#define F_CPU 16000000
+#include <util/delay.h>
+
 /* Create an enum type which represents the following program states:
 	- LED blinker mode
 	- LED-Pushbutton mode
@@ -32,18 +31,27 @@ ISR(PCINT0_vect){
 
 ISR(USART_RX_vect) {
     switch (UDR0) {
-        case 't': state = LED_PUSHBUTTON; break;
-        case 'b': state = LED_BLINKER; break;
-        case 'o': state = TURN_LED_ON; break;
-        case 'f': state = TURN_LED_OFF; break;
+        case 't': 
+            state = LED_PUSHBUTTON; 
+            printf("Button mode enabled\n\r");
+            break;
+        case 'b': 
+            state = LED_BLINKER; 
+            printf("Blinker mode enabled\n\r");
+            break;
+        case 'o': 
+            state = TURN_LED_ON;
+            printf("LED ON\n\r");
+            break;
+        case 'f': 
+            state = TURN_LED_OFF; 
+            printf("LED OFF\n\r");
+            break;
     }
 }
 
-void UART_Init() {
-    //TODO:
-    // Write this function
-    // See the datasheet on page 246 for hints and table 25-9.
-
+void UART_Init() 
+{
     // At first set the baud rate to 9600
     // The CPU clock frequency is 16MHz
     UBRR0 = 103;
@@ -64,36 +72,22 @@ void UART_Init() {
 
 void UART_SendCharacter(char character)
 {
-    // Write this function, which can send a character through UART will polling method
-    // See page 247 of the datasheet for hints, be aware that the code in the datasheet has a problem :)
-    //---------------------------------
-    //TODO:
     // Wait for empty buffer
-    while (!(UCSR0A & (1 << UDRE0)))
-    ;
-    //TODO:
+    while (!(UCSR0A & (1 << UDRE0)));
     // Put data to buffer
     UDR0 = character;
 }
 
 char UART_GetCharacter()
 {
-    // Write this function, which waits for a character and returns when one is received
-    // See page 249 of the datasheet for hints, be aware that the code in the datasheet has a problem :)
-    //---------------------------------
-    //TODO:
     // Wait for data received
-    while (!(UCSR0A & (1 << RXC0)))
-    ;
-    //TODO:
+    while (!(UCSR0A & (1 << RXC0)));
     // Get data from buffer
     return UDR0;
 }
 
 void init() {
-    // Initialize the UART interface with 115200 baud/sec
-    //STDIO_init();
-    
+
     UART_Init();
 
     // Initialize the LED pin
