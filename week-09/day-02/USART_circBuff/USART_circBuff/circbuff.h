@@ -10,7 +10,7 @@ typedef struct circ_buff {
 } circ_buff_t;
 
 // Return a struct
-circ_buff_t circular_buf_init(uint8_t* buffer, size_t size)
+circ_buff_t circular_buf_init(uint8_t* buffer, size_t size);
 
 
 
