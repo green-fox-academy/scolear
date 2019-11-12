@@ -4,16 +4,8 @@
 #include <avr/interrupt.h>
 #include <string.h>
 //#include <STDIO_lib.h>
-
 #define F_CPU 16000000
 #include <util/delay.h>
-
-/* Create an enum type which represents the following program states:
-	- LED blinker mode
-	- LED-Pushbutton mode
-	- LED on mode
-	- LED off mode
-*/
 
 typedef enum program_state {
     LED_BLINKER,
@@ -86,8 +78,8 @@ char UART_GetCharacter()
     return UDR0;
 }
 
-void init() {
-
+void init()
+{
     UART_Init();
 
     // Initialize the LED pin
@@ -140,4 +132,3 @@ int main(void)
         }            
 	}
 }
-
