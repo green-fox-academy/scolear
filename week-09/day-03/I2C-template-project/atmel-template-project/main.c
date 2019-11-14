@@ -5,7 +5,7 @@
 #include <avr/interrupt.h>
 
 #define F_CPU 16000000UL
-#include <avr/delay.h>
+#include <util/delay.h>
 
 #define LED_DDR			DDRB
 #define LED_DDR_POS		DDRB5
@@ -18,7 +18,7 @@ void system_init()
 {
     //TODO
     // Call the TWI driver init function
-
+    TWI_init();
     // SDIO lib is initialed with 115200 baud rate with 8N1 settings
     STDIO_init();
     // Interrupts must be enabled as STDIO lib uses interrupts for receive
@@ -29,14 +29,18 @@ int main(void)
 {
     // Don't forget to call the init function :)
     system_init();
-
+    uint8_t temp;
+    
     printf("System initialized\n");
-
+    
     // Infinite loop
     while (1) {
         //TODO
         //Write the temperature frequently.
-
+        temp = read_temperature(TC_ADDRESS);
+        printf("%d\n", temp);
+        _delay_ms(1000);
+            
         //TODO
         //Advanced: Don't use delay, use timer.
 
