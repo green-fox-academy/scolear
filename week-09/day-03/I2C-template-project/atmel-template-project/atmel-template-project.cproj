@@ -160,6 +160,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="HT16K33_driver.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HT16K33_driver.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>

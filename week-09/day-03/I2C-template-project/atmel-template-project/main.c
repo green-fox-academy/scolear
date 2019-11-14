@@ -1,4 +1,5 @@
 #include "TC74_driver.h"
+#include "HT16K33_driver.h"
 #include "STDIO_lib.h"
 #include <avr/io.h>
 #include <stdio.h>
@@ -16,7 +17,6 @@
 
 void system_init()
 {
-    //TODO
     // Call the TWI driver init function
     TWI_init();
     // SDIO lib is initialed with 115200 baud rate with 8N1 settings
@@ -27,25 +27,28 @@ void system_init()
 
 int main(void)
 {
-    // Don't forget to call the init function :)
     system_init();
-    volatile int8_t temperature;
-    
     printf("System initialized\n");
     
-    // Infinite loop
-    while (1) {
-        //TODO
-        //Write the temperature frequently.
+    volatile int8_t temperature; 
+    
+    start_LED_osc();
+    TWI_start();
+    TWI_write(LED_ADDRESS);
+    TWI_write(0b00000001);
+    TWI_write(0b00000001);
+    TWI_write(0b00000001);
+    TWI_stop();
+    TWI_start();
+    TWI_write(LED_ADDRESS);
+    TWI_write(LED_DISPLAY_ON);
+    TWI_write(LED_OSC_OFF);
+    TWI_stop();
+    
+    while (1) 
+    {    
         temperature = read_temperature(TC_ADDRESS);
         printf("Current temperature of sensor: %d\n", temperature);
         _delay_ms(500);
-            
-        //TODO
-        //Advanced: Don't use delay, use timer.
-
-        //TODO
-        //Blink the led to make sure the code is running
-
     }
 }

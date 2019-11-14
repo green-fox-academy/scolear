@@ -8,16 +8,13 @@
 
 void TWI_init(void)
 {
-    // TODO:
     // Set Prescaler to 4
     TWSR |= 1 << 0;
 
-    // TODO:
     // Set SCL frequency = 16000000 / (16 + 2 * 48 * 4) = 40Khz
     //So set the correct register to 0x30
     TWBR = 0x30;
 
-    // TODO
     //Enable TWI
     TWCR = 1 << TWEN;
 }
@@ -38,9 +35,16 @@ void TWI_stop(void)
     TWCR = (1<<TWINT) | (1<<TWSTO) | (1<<TWEN);
 }
 
+void TWI_reset(void)
+{
+    TWSR = 0b11111001;  // prescaler to 4 !!
+    TWAR = 0b11111110;
+    TWDR = 0b11111111;
+    TWCR = 0b00000100;
+}
+
 uint8_t TWI_read_ack(void)
 {
-    //TODO
     //Read byte with ACK
     //Wait for TWINT Flag set. This indicates that
     //the DATA has been transmitted, and ACK/
@@ -54,12 +58,11 @@ uint8_t TWI_read_ack(void)
 
 uint8_t TWI_read_nack(void)
 {
-    //TODO
     //Read byte with NACK
     //Wait for TWINT Flag set. This indicates that
     //the DATA has been transmitted, and ACK/
     //NACK has been received.
-
+    return 0;
 }
 
 void TWI_write(uint8_t u8data)
@@ -75,7 +78,6 @@ void TWI_write(uint8_t u8data)
     while (!(TWCR & (1<<TWINT)));
 }
 
-//TODO
 //Write a function that communicates with the TC74A0.
 //The function need to be take the address of the ic as a parameter.
 //datasheet: http://ww1.microchip.com/downloads/en/DeviceDoc/21462D.pdf
@@ -88,23 +90,20 @@ int8_t read_temperature(uint8_t slave_address)
     TWI_start();
     slave_address = (slave_address << 1) + TC_WRITE;    // add write bit to address
     TWI_write(slave_address);                           // send out slave address + W
-    
     TWI_write(0x00);                                    // send out command of READ_TEMPERATURE
     
     TWI_start();
     
     slave_address |= TC_READ;
-    
     TWI_write(slave_address);
-    
     TWCR |= 1 << TWINT;
     _delay_ms(10);
     temp = TWDR;
     
     TWI_stop();
+    TWI_reset();
     return temp;
 }
-
 
 
 //TODO Advanced:
