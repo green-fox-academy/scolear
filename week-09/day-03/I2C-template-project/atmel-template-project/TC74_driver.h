@@ -8,7 +8,7 @@
 #define TC_READ		1
 
 //Define the TC74A0 address
-#define TC_ADDRESS 0b1001000
+#define TC_ADDRESS 0b01001000
 
 #define START           0x08
 #define REPEATED_START  0x10
@@ -24,6 +24,6 @@ void TWI_stop(void);
 uint8_t TWI_read_nack(void);
 uint8_t TWI_read_ack(void);
 
-uint8_t read_temperature(uint8_t slave_address);
+int8_t read_temperature(uint8_t slave_address);
 
 #endif // _TC74_DRIVER_H

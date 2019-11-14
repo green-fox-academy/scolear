@@ -3,6 +3,9 @@
 #include <stdint.h>
 #include "TC74_driver.h"
 
+#define F_CPU 16000000UL
+#include <util/delay.h>
+
 void TWI_init(void)
 {
     // TODO:
@@ -32,8 +35,7 @@ void TWI_start(void)
 void TWI_stop(void)
 {
     //Send stop signal
-    TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
-    while((TWCR & (1<<TWSTO)));
+    TWCR = (1<<TWINT) | (1<<TWSTO) | (1<<TWEN);
 }
 
 uint8_t TWI_read_ack(void)
@@ -79,29 +81,27 @@ void TWI_write(uint8_t u8data)
 //datasheet: http://ww1.microchip.com/downloads/en/DeviceDoc/21462D.pdf
 //And returns with the temperature.
 
-uint8_t read_temperature(uint8_t slave_address) 
+int8_t read_temperature(uint8_t slave_address) 
 {
-    uint8_t temp;
+    int8_t temp;
     
     TWI_start();
     slave_address = (slave_address << 1) + TC_WRITE;    // add write bit to address
     TWI_write(slave_address);                           // send out slave address + W
     
-    TWI_read_ack();
-    
     TWI_write(0x00);                                    // send out command of READ_TEMPERATURE
-    
-    TWI_read_ack();
     
     TWI_start();
     
     slave_address |= TC_READ;
     
     TWI_write(slave_address);
-    temp = TWDR;
-    TWI_read_ack();
-    TWI_stop();
     
+    TWCR |= 1 << TWINT;
+    _delay_ms(10);
+    temp = TWDR;
+    
+    TWI_stop();
     return temp;
 }
 

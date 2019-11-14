@@ -29,7 +29,7 @@ int main(void)
 {
     // Don't forget to call the init function :)
     system_init();
-    uint8_t temp;
+    volatile int8_t temperature;
     
     printf("System initialized\n");
     
@@ -37,9 +37,9 @@ int main(void)
     while (1) {
         //TODO
         //Write the temperature frequently.
-        temp = read_temperature(TC_ADDRESS);
-        printf("%d\n", temp);
-        _delay_ms(1000);
+        temperature = read_temperature(TC_ADDRESS);
+        printf("Current temperature of sensor: %d\n", temperature);
+        _delay_ms(500);
             
         //TODO
         //Advanced: Don't use delay, use timer.
