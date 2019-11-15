@@ -30,20 +30,14 @@ int main(void)
     system_init();
     printf("System initialized\n");
     
-    volatile int8_t temperature; 
+    volatile int8_t temperature;
+    uint8_t shape[8] = {0x02, 0x3c, 0xa4, 0x24, 0x3c, 0x04, 0x05, 0x44};
     
     start_LED_osc();
-    TWI_start();
-    TWI_write(LED_ADDRESS);
-    TWI_write(0b00000001);
-    TWI_write(0b00000001);
-    TWI_write(0b00000001);
-    TWI_stop();
-    TWI_start();
-    TWI_write(LED_ADDRESS);
-    TWI_write(LED_DISPLAY_ON);
-    TWI_write(LED_OSC_OFF);
-    TWI_stop();
+
+    draw_shape(shape);
+        
+    update_display();
     
     while (1) 
     {    
