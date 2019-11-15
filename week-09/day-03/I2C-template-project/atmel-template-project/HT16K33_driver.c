@@ -14,8 +14,16 @@ uint8_t digit_8[8] = {0x00, 0xc0, 0xa0, 0xa0, 0xa0, 0xe0, 0xa0, 0xe0};
 uint8_t digit_9[8] = {0x00, 0xc0, 0xa0, 0xa0, 0xa0, 0xe0, 0x80, 0x80};
 
 uint8_t *digits[10] = {digit_0, digit_1, digit_2, digit_3, digit_4, digit_5, digit_6, digit_7, digit_8, digit_9};
+
+void LED_matrix_init()
+{
+    uint8_t welcome_shape[8] = {0x00, 0x2e, 0x6a, 0xaa, 0xaa, 0xaa, 0xaa, 0xae};
     
-    
+    start_LED_osc();
+    draw_shape(welcome_shape);
+    turn_on_display();
+    _delay_ms(1000);
+}
 
 void start_LED_osc()
 {
@@ -64,7 +72,7 @@ void clear_display()
     TWI_stop();
 }
 
-void update_display()
+void turn_on_display()
 {
         TWI_start();
         TWI_write(LED_ADDRESS);
@@ -86,6 +94,5 @@ void display_temperature(uint8_t temperature)
         
         final_shape[i] = left_d[i] | digits[right_digit][i];
     }
-    
     draw_shape(final_shape);
 }
