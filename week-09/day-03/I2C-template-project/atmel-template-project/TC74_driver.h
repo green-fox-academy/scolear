@@ -25,6 +25,6 @@ void TWI_reset(void);
 uint8_t TWI_read_nack(void);
 uint8_t TWI_read_ack(void);
 
-int8_t read_temperature(uint8_t slave_address);
+uint8_t read_temperature(uint8_t slave_address);
 
 #endif // _TC74_DRIVER_H

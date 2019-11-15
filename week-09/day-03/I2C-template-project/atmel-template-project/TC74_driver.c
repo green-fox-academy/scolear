@@ -9,11 +9,11 @@
 void TWI_init(void)
 {
     // Set Prescaler to 4
-    TWSR |= 1 << 0;
+    TWSR |= 0b01;
 
     // Set SCL frequency = 16000000 / (16 + 2 * 48 * 4) = 40Khz
     //So set the correct register to 0x30
-    TWBR = 0x30;
+    TWBR = 16;
 
     //Enable TWI
     TWCR = 1 << TWEN;
@@ -83,9 +83,9 @@ void TWI_write(uint8_t u8data)
 //datasheet: http://ww1.microchip.com/downloads/en/DeviceDoc/21462D.pdf
 //And returns with the temperature.
 
-int8_t read_temperature(uint8_t slave_address) 
+uint8_t read_temperature(uint8_t slave_address) 
 {
-    int8_t temp;
+    uint8_t temp;
     
     TWI_start();
     slave_address = (slave_address << 1) + TC_WRITE;    // add write bit to address
@@ -97,7 +97,8 @@ int8_t read_temperature(uint8_t slave_address)
     slave_address |= TC_READ;
     TWI_write(slave_address);
     TWCR |= 1 << TWINT;
-    _delay_ms(10);
+    while (!(TWCR & (1<<TWINT)));
+    
     temp = TWDR;
     
     TWI_stop();

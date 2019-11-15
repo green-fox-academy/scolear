@@ -30,19 +30,20 @@ int main(void)
     system_init();
     printf("System initialized\n");
     
-    volatile int8_t temperature;
-    uint8_t shape[8] = {0x02, 0x3c, 0xa4, 0x24, 0x3c, 0x04, 0x05, 0x44};
+    volatile uint8_t temperature;
+    uint8_t shape[8] = {0x00, 0x2e, 0x6a, 0xaa, 0xaa, 0xaa, 0xaa, 0xae};
     
     start_LED_osc();
-
     draw_shape(shape);
-        
     update_display();
+    _delay_ms(1500);
     
     while (1) 
     {    
         temperature = read_temperature(TC_ADDRESS);
         printf("Current temperature of sensor: %d\n", temperature);
-        _delay_ms(500);
+        display_temperature(temperature);
+
+        _delay_ms(1000);
     }
 }

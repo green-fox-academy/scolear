@@ -9,10 +9,11 @@
 #define LED_DISPLAY_ON  0b10000001
 
 void start_LED_osc();
+void stop_LED_osc();
 void draw_shape(uint8_t data[]);
 void clear_display();
 void update_display();
 
-
+void display_temperature(uint8_t temperature);
 
 #endif /* HT16K33_DRIVER_H_ */
