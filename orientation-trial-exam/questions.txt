@@ -1,0 +1,13 @@
+- Given the following number: 10010011. How do you change the second bit to 1 and the last bit to 0 with bitwise operators without changing the other bits? 
+
+    #include <stdint.h>
+
+    uint8_t byte = 0b10010011;
+    byte |= 1 << 6;
+    byte &= 0b11111110;
+
+- What's the difference between pseudo random number generation and true random number generation?
+
+True random number generation uses some non-reproducible physical phenomena to generate its output, like real time analysis of a video of several lava-lamps. 
+Pseudo random number generation relies on reproducible mathematical formulas and algorithms, which mimick randomness. Most of the time this is good enough, 
+and it is even more reliable and cost effective in most cases.
