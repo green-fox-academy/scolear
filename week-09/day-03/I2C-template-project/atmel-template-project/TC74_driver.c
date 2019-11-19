@@ -3,8 +3,7 @@
 #include <stdint.h>
 #include "TC74_driver.h"
 
-#define F_CPU 16000000UL
-#include <util/delay.h>
+
 
 void TWI_init(void)
 {

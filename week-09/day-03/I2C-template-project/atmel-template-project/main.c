@@ -8,11 +8,45 @@
 #define F_CPU 16000000UL
 #include <util/delay.h>
 
+volatile int8_t global_bias = 0;
+
+ISR(INT0_vect)
+{
+    global_bias--;
+}
+
+ISR(INT1_vect)
+{
+    global_bias++;
+}
+
+ISR(PCINT0_vect)
+{
+    global_bias = 0;
+}
+
+void button_init()
+{
+    EIMSK |= 0b00000011;    // enable external interrupts
+    EICRA |= 0b00001010;    // external interrupt modes: falling edge
+    
+    PCMSK0 |= 1 << PCINT0;
+    PCICR |= 1 << PCIE0;
+}
+
+void timer_init()
+{
+    TCCR0B |= 0b00000101;
+    TIMSK0 |= 1 << 0;
+}
+
 void system_init()
 {
     TWI_init();
     // SDIO lib is initialized with 115200 baud rate with 8N1 settings
     STDIO_init();
+    button_init();
+    //timer_init();
     sei();
 }
 
@@ -27,6 +61,7 @@ int main(void)
     while (1) 
     {    
         temperature = read_temperature(TC_ADDRESS);
+        temperature += global_bias;
         printf("Current temperature of sensor: %d\n", temperature);
         
         display_temperature(temperature);

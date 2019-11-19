@@ -4,6 +4,9 @@
 
 #include <stdint.h>
 
+#define F_CPU 16000000UL
+#include <util/delay.h>
+
 #define TC_WRITE	0
 #define TC_READ		1
 
