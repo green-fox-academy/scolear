@@ -8,16 +8,21 @@
 #define F_CPU 16000000UL
 #include <util/delay.h>
 
+#define INT_DELAY 100
+
 volatile int8_t global_bias = 0;
 
 ISR(INT0_vect)
 {
+    printf("Lowering bias\n");
     global_bias--;
+    _delay_ms(INT_DELAY);
 }
 
 ISR(INT1_vect)
 {
     global_bias++;
+    _delay_ms(INT_DELAY);
 }
 
 ISR(PCINT0_vect)
@@ -34,19 +39,12 @@ void button_init()
     PCICR |= 1 << PCIE0;
 }
 
-void timer_init()
-{
-    TCCR0B |= 0b00000101;
-    TIMSK0 |= 1 << 0;
-}
-
 void system_init()
 {
     TWI_init();
     // SDIO lib is initialized with 115200 baud rate with 8N1 settings
     STDIO_init();
     button_init();
-    //timer_init();
     sei();
 }
 
