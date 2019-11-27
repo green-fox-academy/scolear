@@ -62,10 +62,10 @@ typedef struct digimon {
     int health;
     char *tamer;
     Level level;
-} digimon_t, *digimon_p;
+} digimon_t;
 
-int get_minimum_health_index (digimon_t array[], int array_size) {
-
+int get_minimum_health_index (digimon_t array[], int array_size)
+{
     int min = array[0].health;
     int min_index = 0;
 
@@ -88,7 +88,8 @@ int get_digivolution_level_count (digimon_t array[], int array_size, Level level
     return count;
 }
 
-int get_same_tamer_count (digimon_t array[], int array_size, char *tamer) {
+int get_same_tamer_count (digimon_t array[], int array_size, const char *tamer)
+{
     int count = 0;
     for (int i = 0; i < array_size; ++i) {
         if (array[i].tamer == tamer) {
@@ -98,26 +99,28 @@ int get_same_tamer_count (digimon_t array[], int array_size, char *tamer) {
     return count;
 }
 
-float get_tamer_avg_health (digimon_t array[], int array_size, const char *tamer) {
+float get_tamer_avg_health (digimon_t array[], int array_size, const char *tamer)
+{
     float sum = 0;
 
     for (int i = 0; i < array_size; ++i) {
-        sum += array[i].health;
+        if (array[i].tamer == tamer) {
+            sum += array[i].health;
+        }
     }
-
     return sum / array_size;
 }
 
 int main()
 {
-    digimon_t creature1 = {"Bulba", 23, 58, "Joe", ROOKIE};
-    digimon_t creature2 = {"Liu", 52, 28, "Glue", IN_TRAINING};
-    digimon_t creature3 = {"Hala", 230, 8, "Joe", ROOKIE};
-    digimon_t creature4 = {"Bul", 12, 14, "Joe", BABY};
-    digimon_t creature5 = {"Aru", 129, 89, "Glue", MEGA};
+    digimon_t digimons[] = {{"Bulba", 23, 58, "Joe", ROOKIE},
+                            {"Liu", 52, 28, "Glue", IN_TRAINING},
+                            {"Hala", 230, 8, "Joe", ROOKIE},
+                            {"Bul", 12, 14, "Joe", BABY},
+                            {"Aru", 129, 89, "Glue", MEGA}};
 
-    digimon_t digimons[] = {creature1, creature2, creature3, creature4, creature5};
     int digimons_size = sizeof(digimons) / sizeof(digimons[0]);
+
     printf("Minimum health index: %d\n", get_minimum_health_index(digimons, digimons_size));
     printf("Digivolution_level_count: %d\n", get_digivolution_level_count(digimons, digimons_size, ROOKIE));
     printf("Same tamer count: %d\n", get_same_tamer_count(digimons, digimons_size, "Joe"));
