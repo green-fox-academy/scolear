@@ -16,7 +16,7 @@ int main() {
 
     cv::Mat image(SIZE, SIZE, CV_8UC3, BACKGROUND_COLOR);
 
-    for (int j = 0; j < SIZE; j += 10) {
+    for (int j = 0; j < SIZE; j += 20) {
         MyLine(image, cv::Point(j,0), cv::Point(j, SIZE), cv::Scalar(255, 255, 255));
     }
 
@@ -26,8 +26,11 @@ int main() {
 
     MyFilledCircle(image, cv::Point(SIZE/2, SIZE/2), BLACK);
 
+    cv::putText(image, "Enter the Void", cv::Point(0, SIZE), 2, 2, WHITE, 5);
+
     cv::namedWindow("Display", cv::WINDOW_AUTOSIZE);
     cv::imshow("Display", image);
+
     cv::waitKey();
 
     return 0;
