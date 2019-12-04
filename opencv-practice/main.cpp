@@ -36,6 +36,11 @@ int main()
     cv::namedWindow("Blended", cv::WINDOW_AUTOSIZE);
     cv::imshow("Blended", blend);
 
+    cv::Mat gray;
+    cv::cvtColor(image2, gray, cv::COLOR_RGB2GRAY);
+    cv::namedWindow("Grayscale", cv::WINDOW_AUTOSIZE);
+    cv::imshow("Grayscale", gray);
+
     cv::waitKey(0);
 
     return 0;
