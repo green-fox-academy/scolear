@@ -1,6 +1,6 @@
 #include "saturation.h"
 
-cv::Mat create_saturated(cv::Mat original, double alpha, int beta)
+cv::Mat create_saturated(const cv::Mat& original, double alpha, int beta)
 {
     cv::Mat new_image = cv::Mat::zeros(original.size(), original.type());
 
