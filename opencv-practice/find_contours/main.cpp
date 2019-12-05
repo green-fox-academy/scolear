@@ -14,10 +14,8 @@ struct tm * timeinfo;
 void thresh_callback(int, void* );
 void thresh_callback_video(int, void* );
 
-int main() {
-
-
-
+int main()
+{
     cv::Mat src = cv::imread("../Edo-Tokyo.-Tokyo-Blade-Runner-style-nightscapes-Photo-by-Tom-Blachford.jpg", 1);
 
     cv::VideoCapture cap(0);
@@ -40,7 +38,6 @@ int main() {
     thresh_callback(0, 0);
 
     cv::createTrackbar("Canny thresh:", "Frame", &thresh, max_thresh, thresh_callback);
-
 
     while(1) {
 
