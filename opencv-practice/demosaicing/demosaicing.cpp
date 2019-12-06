@@ -23,17 +23,14 @@ cv::Mat demosaicing_nearest(const cv::Mat& image)
             if (channels[0].at<uchar>(i, j) == 0) {
                 RED_BLUE_handler(channels, blue, 0, i, j);
             }
-
             if (channels[1].at<uchar>(i, j) == 0) {
                 GREEN_handler(channels, green, i, j);
             }
-
             if (channels[2].at<uchar>(i, j) == 0) {
                 RED_BLUE_handler(channels, red, 2, i, j);
             }
         }
     }
-
     std::vector<cv::Mat> result = {blue, green, red};
     cv::merge(result, dst);
     return dst;
