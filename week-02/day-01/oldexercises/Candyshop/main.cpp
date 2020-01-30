@@ -7,11 +7,10 @@
 std::vector<std::string> filter(std::vector<std::string> unfilteredList, const std::vector<std::string>& referenceList)
 {
     if (unfilteredList.size() == referenceList.size()) return unfilteredList;
-
-    std::vector<std::string> result;
     bool found;
 
     for (int i = 0; i < unfilteredList.size(); ++i) {
+
         found = false;
         for (int j = 0; j < referenceList.size(); ++j) {
             if (unfilteredList[i] == referenceList[j]) {
@@ -19,11 +18,14 @@ std::vector<std::string> filter(std::vector<std::string> unfilteredList, const s
                 break;
             }
         }
-        if (found) result.push_back(unfilteredList[i]);
+
+        if (!found) {
+            unfilteredList.erase(unfilteredList.begin() + i);
+            i--;
+        }
     }
 
-
-    return result;
+    return unfilteredList;
 }
 
 int main(int argc, char* args[])
