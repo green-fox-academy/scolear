@@ -5,11 +5,21 @@
 std::vector<std::string> makingMatches(const std::vector<std::string>& girls, const std::vector<std::string>& boys)
 {
     std::vector<std::string> result;
-    int size = girls.size() > boys.size() ? girls.size() : boys.size();
-    for (int i = 0; i < size; ++i) {
+    int i;
+
+    for (i = 0; i < girls.size(); ++i) {
         result.push_back(girls[i]);
-        result.push_back(boys[i]);
+        if (i < boys.size()) {
+            result.push_back(boys[i]);
+        }
     }
+    if (boys.size() > girls.size()){
+        for (int j = i; j < boys.size(); ++j) {
+            result.push_back(boys[j]);
+        }
+    }
+
+    return result;
 }
 
 int main(int argc, char* args[])
