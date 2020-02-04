@@ -75,6 +75,33 @@ bool firstLetterUpper(const std::string& text)
     return true;
 }
 
+bool weirdValidity(const std::vector<int>& arr)
+{
+    std::vector<int> sorted = arr;
+
+    std::sort(sorted.begin(), sorted.end(), std::greater<>());
+    int max = sorted[0];
+
+    if (sorted.size() < max) return false;
+
+    for (int i = 1; i < sorted.size(); ++i) {
+        if (sorted[i] != max - i) return false;
+    }
+
+    return true;
+}
+
+std::vector<std::vector<int>> drawTable(int N)
+{
+    std::vector<std::vector<int>> table(N, std::vector<int>(N, 0));
+
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            table[i][j] = (i + 1) * (j + 1);
+        }
+    }
+    return table;
+}
 
 int main(int argc, char* args[])
 {
@@ -225,6 +252,20 @@ int main(int argc, char* args[])
     }
 
     std::cout << (firstLetterUpper(mondat) ? "cool" : "fix yo shit") << std::endl;
+
+    std::vector<int> someArray = {1, 3, 5, 6, 4, 2};
+    std::vector<int> someOtherArray = {1, 3, 5, 6, 10, 2};
+
+    std::cout << (weirdValidity(someOtherArray) ? "yes" : "no") << std::endl;
+
+    std::vector<std::vector<int>> multiplicationTable = drawTable(5);
+
+    for (int k = 0; k < multiplicationTable[0].size(); ++k) {
+        for (int i = 0; i < multiplicationTable[k].size(); ++i) {
+            std::cout << multiplicationTable[k][i] << ", ";
+        }
+        std::cout << std::endl;
+    }
 
     return 0;
 }
