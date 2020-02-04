@@ -14,6 +14,67 @@ std::string reverse(const std::string& text)
     return result;
 }
 
+char findMostCommonChar(const std::string& mondat)
+{
+    std::map<char, int> frequency;
+    char mostCommon = '\0';
+
+    for (char i : mondat) {
+        if (i != ' ') {
+            frequency[i]++;
+        }
+    }
+
+    int max = 0;
+
+    for (auto it : frequency) {
+        if (it.second > max) {
+            max = it.second;
+            mostCommon = it.first;
+        }
+    }
+    return mostCommon;
+}
+
+std::vector<std::string> parse(const std::string& sentence)
+{
+    std::vector<std::string> result;
+    int wordCount = 0;
+    std::string temp;
+
+    for (int i = 0; i < sentence.length(); ++i) {
+        temp.push_back(sentence[i]);
+        if (sentence[i] == '.') {
+            result.push_back(temp);
+            wordCount = 0;
+            temp.clear();
+            i++;
+            continue;
+        }
+        if (sentence[i] == ' ') {
+            wordCount++;
+            if (wordCount == 5) {
+                result.push_back(temp);
+                wordCount = 0;
+                temp.clear();
+            }
+        }
+    }
+    return result;
+}
+
+bool firstLetterUpper(const std::string& text)
+{
+    if (std::islower(text[0])) return false;
+
+    for (int i = 0; i < text.length() - 2; i++) {
+        if (text[i] == '.') {
+            if (std::islower(text[i + 2])) return false;
+        }
+    }
+    return true;
+}
+
 
 int main(int argc, char* args[])
 {
@@ -147,5 +208,24 @@ int main(int argc, char* args[])
 
     std::cout << sum / growthParameters.size() << std::endl;
 
+    std::string mondat = "A Robi egy meleg allat, a Levi pedig szep.";
+
+    char mostCommon = findMostCommonChar(mondat);
+
+    printf("%c\n", mostCommon);
+
+    std::string sentence = " Levi is meleg, es a Robi is szep.";
+
+    mondat.insert(mondat.end(), sentence.begin(), sentence.end());
+
+    std::vector<std::string> parsed = parse(mondat);
+
+    for (const auto & j : parsed) {
+        std::cout << j << std::endl;
+    }
+
+    std::cout << (firstLetterUpper(mondat) ? "cool" : "fix yo shit") << std::endl;
+
     return 0;
 }
+
