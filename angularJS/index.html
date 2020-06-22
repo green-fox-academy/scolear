@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello AngularJS</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+    <script>
+        angular.module('app', [])
+            .controller('HomeController', function HomeController($scope) {
+                this.show = true;
+                this.todos = [
+                    { id: 1, task: 'Buy some milk', done: false, dueAt: '2019-11-12T13:12' },
+                    { id: 2, task: 'Feed the dog', done: true, dueAt: '2019-12-12T11:11' },
+                    { id: 3, task: 'Read the news', done: false, dueAt: '2020-11-12T23:42' }
+                ];
+                this.completed = function() {
+                    var count = 0;
+                    for (let index = 0; index < this.todos.length; index++) {
+                        const task = this.todos[index];
+                        if (task.done) {
+                            count++;
+                        }
+                    }
+                    return count;
+                };
+                this.clicked = function() {
+                    this.show = !this.show;
+                };
+                this.addNew = function(newTask, newTaskDueAt) {
+                    console.log(newTask);
+                    console.log(newTaskDueAt);
+                }
+            });
+    </script>
+</head>
+
+<body ng-controller="HomeController as $ctrl">
+    <button type="button" ng-click="$ctrl.clicked()">Show/Hide Todos</button>
+    <br>
+    <input type="text" ng-model="$ctrl.newTask" placeholder="Enter new task" />
+    <input type="text" ng-model="$ctrl.newTaskDueAt" placeholder="When its due" />
+    <button ng-click="$ctrl.addNew($ctrl.newTask, $ctrl.newTaskDueAt)" >Add Todo</button>
+    <ul>
+        <li ng-repeat="todo in $ctrl.todos | filter: {done: false} | orderBy: 'dueAt'" ng-show="$ctrl.show">
+            {{todo.task}} - {{todo.dueAt}}
+        </li>
+    </ul>
+    <div>
+        Number of completed tasks: {{$ctrl.completed()}}
+    </div>
+</body>
+</html>
